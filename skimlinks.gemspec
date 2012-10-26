@@ -21,8 +21,12 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
 
   gem.add_development_dependency 'rspec', '~> 2.11.0'
+  gem.add_development_dependency 'webmock', '~> 1.8.11'
+  gem.add_development_dependency 'vcr', '~> 2.2.5'
   gem.add_development_dependency 'rake', '~> 0.9.2.2'
   gem.add_development_dependency 'rb-fsevent', '~> 0.9.2'
   gem.add_development_dependency 'guard', '~> 1.4.0'
   gem.add_development_dependency 'guard-rspec', '~> 2.1.0'
+
+  gem.add_dependency 'httparty', '~> 0.9.0'
 end
