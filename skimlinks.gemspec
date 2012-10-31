@@ -25,8 +25,8 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'vcr', '~> 2.3.0'
   gem.add_development_dependency 'rake', '~> 0.9.2.2'
   gem.add_development_dependency 'rb-fsevent', '~> 0.9.2'
-  gem.add_development_dependency 'guard', '~> 1.4.0'
-  gem.add_development_dependency 'guard-rspec', '~> 2.1.0'
+  gem.add_development_dependency 'guard', '~> 1.5.2'
+  gem.add_development_dependency 'guard-rspec', '~> 2.1.1'
 
   gem.add_dependency 'mechanize', '~> 2.5.1'
   gem.add_dependency 'rest-client', '~> 1.6.7'
