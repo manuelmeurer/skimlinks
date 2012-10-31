@@ -4,23 +4,12 @@ require 'mechanize'
 
 module Skimlinks
   class Client
-    Endpoints = {
+    API_ENDPOINTS = {
       :product_api  => 'http://api-product.skimlinks.com/',
       :merchant_api => 'http://api-merchants.skimlinks.com/merchants/',
       :link_api     => 'http://go.productwidgets.com/'
     }
-    DefaultParams = {
-      :product_api => {
-        :format => 'json'
-      },
-      :merchant_api => {
-        :format => 'json'
-      },
-      :link_api => {
-        :xs => 1
-      }
-    }
-    RequiredParams = %w(
+    PRODUCT_SEARCH_REQUIRED_PARAMS = %w(
       ids
       query
       locale
@@ -29,7 +18,7 @@ module Skimlinks
       merchant_id
       category_ids
     )
-    LocaleMerchantCountries = {
+    LOCALE_MERCHANT_COUNTRIES = {
       :uk => [
         'united kingdom',
         'international'
@@ -49,8 +38,8 @@ module Skimlinks
         self.send "#{key}=", options[key]
       end
 
-      @product_api  = RestClient::Resource.new(Endpoints[:product_api])
-      @merchant_api = RestClient::Resource.new(Endpoints[:merchant_api])
+      @product_api  = RestClient::Resource.new(API_ENDPOINTS[:product_api])
+      @merchant_api = RestClient::Resource.new(API_ENDPOINTS[:merchant_api])
       @mechanize    = Mechanize.new do |m|
         m.agent.redirect_ok      = false
         m.agent.http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -58,7 +47,7 @@ module Skimlinks
     end
 
     def product_search(params)
-      raise StandardError, "One of these params must be set: #{RequiredParams.join(', ')}" if RequiredParams.all? { |param| params[param.to_sym].blank? }
+      raise StandardError, "One of these params must be set: #{PRODUCT_SEARCH_REQUIRED_PARAMS.join(', ')}" if PRODUCT_SEARCH_REQUIRED_PARAMS.all? { |param| params[param.to_sym].blank? }
 
       returning_count_and_products do
         api_query = []
@@ -107,7 +96,7 @@ module Skimlinks
           # Filter by locale
           if locale.present?
             data['merchants'].reject! do |merchant|
-              merchant['countries'].present? && (LocaleMerchantCountries[locale.to_sym] & merchant['countries']).empty?
+              merchant['countries'].present? && (LOCALE_MERCHANT_COUNTRIES[locale.to_sym] & merchant['countries']).empty?
             end
           end
 
@@ -162,7 +151,10 @@ module Skimlinks
     end
 
     def product_api(method, params = {})
-      query_params = DefaultParams[:product_api].merge(params).reverse_merge(:key => Skimlinks.configuration.api_key)
+      query_params = params.reverse_merge(
+        :format => Skimlinks.configuration.format,
+        :key    => Skimlinks.configuration.api_key
+      )
 
       raise Skimlinks::ApiError, 'API key not configured' if query_params[:key].blank?
 
@@ -178,7 +170,7 @@ module Skimlinks
 
       returning_json do
         path = [
-          DefaultParams[:merchant_api][:format],
+          Skimlinks.configuration.format,
           Skimlinks.configuration.api_key,
           method,
           *params
@@ -189,8 +181,8 @@ module Skimlinks
     end
 
     def link_api(url, publisher_id)
-      query_params = DefaultParams[:link_api].merge(:url => CGI.escape(url), :id => publisher_id)
-      path         = [Endpoints[:link_api], URI.encode_www_form(params)].join('?')
+      query_params = { :url => CGI.escape(url), :id => publisher_id, :xs => 1 }
+      path         = [API_ENDPOINTS[:link_api], URI.encode_www_form(query_params)].join('?')
       response     = @mechanize.head(path)
 
       raise StandardError, "Unexpected response code: #{response.code}" unless response.code == '302'
