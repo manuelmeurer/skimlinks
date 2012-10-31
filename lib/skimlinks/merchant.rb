@@ -1,3 +1,5 @@
+require 'active_support/hash_with_indifferent_access'
+
 module Skimlinks
   class Merchant
     attr_accessor :id, :name, :preferred, :updated_at, :average_conversion_rate, :average_commission, :logo_url, :domains, :categories, :countries, :product_count

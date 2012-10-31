@@ -1,4 +1,6 @@
 module Skimlinks
+  class ApiError < StandardError; end
+
   class << self
     def configure
       yield configuration

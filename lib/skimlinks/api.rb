@@ -1,3 +1,7 @@
+require 'json'
+require 'rest-client'
+require 'mechanize'
+
 module Skimlinks
   class Api
     Endpoints = {
@@ -7,11 +11,9 @@ module Skimlinks
     }
     DefaultParams = {
       product_api: {
-        key:    Skimlinks.configuration.api_key,
         format: 'json'
       },
       merchant_api: {
-        key:    Skimlinks.configuration.api_key,
         format: 'json'
       },
       link_api: {
@@ -84,18 +86,7 @@ module Skimlinks
     end
 
     def merchant_category_ids
-      flatten = lambda do |r|
-        case r
-        when Hash
-          r.to_a.map { |v| flatten.call(v) }.flatten
-        when Array
-          r.flatten.map { |v| flatten.call(v) }
-        else
-          r
-        end
-      end
-
-      flatten.call(self.merchant_categories).grep(/^\d+$/).uniq.map(&:to_i)
+      flatten(self.merchant_categories).grep(/^\d+$/).uniq.map(&:to_i)
     end
 
     def merchants(category_id, locale, exclude_no_products)
@@ -138,73 +129,72 @@ module Skimlinks
 
     private
 
+    private
+
+    def flatten(object)
+      case object
+      when Hash
+        object.to_a.map { |v| flatten(v) }.flatten
+      when Array
+        object.flatten.map { |v| flatten(v) }
+      else
+        object
+      end
+    end
+
+    def returning_json(&block)
+      JSON.parse block.call
+    end
+
+    def returning_xml(&block)
+      Nokogiri::XML block.call
+    end
+
     def returning_count_and_products(&block)
       result = block.call
       [result['numFound'], result['products']]
     end
 
     def product_api(method, params = {})
-      cache_key = [
-        'skimlinks',
-        'product_api',
-        method,
-        Digest::MD5.hexdigest(params.to_json)
-      ].join(':')
+      query_params = DefaultParams[:product_api].merge(params).reverse_merge(key: Skimlinks.configuration.api_key)
 
-      Rails.cache.fetch cache_key, expires_in: CacheTtl do
-        returning_json do
-          query_params = DefaultParams[:product_api].merge(params)
-          path         = [method, URI.encode_www_form(query_params)].join('?')
+      raise Skimlinks::ApiError, 'API key not configured' if query_params[:key].blank?
 
-          @product_api[path].get
-        end
+      path = [method, URI.encode_www_form(query_params)].join('?')
+
+      returning_json do
+        @product_api[path].get
       end
     end
 
     def merchant_api(method, *params)
-      cache_key = [
-        'skimlinks',
-        'merchant_api',
-        method,
-        Digest::MD5.hexdigest(params.to_json)
-      ].join(':')
+      raise Skimlinks::ApiError, 'API key not configured' if Skimlinks.configuration.api_key.blank?
 
-      Rails.cache.fetch cache_key, expires_in: CacheTtl do
-        returning_json do
-          path = [
-            DefaultParams[:merchant_api][:format],
-            DefaultParams[:merchant_api][:key],
-            method,
-            *params
-          ].join('/')
+      returning_json do
+        path = [
+          DefaultParams[:merchant_api][:format],
+          Skimlinks.configuration.api_key,
+          method,
+          *params
+        ].join('/')
 
-          @merchant_api[path].get
-        end
+        @merchant_api[path].get
       end
     end
 
     def link_api(url, publisher_id)
-      cache_key = [
-        'skimlinks',
-        'link_api',
-        publisher_id,
-        Digest::MD5.hexdigest(url)
-      ].join(':')
+      query_params = DefaultParams[:link_api].merge(url: CGI.escape(url), id: publisher_id)
+      path         = [Endpoints[:link_api], URI.encode_www_form(params)].join('?')
+      response     = @mechanize.head(path)
 
-      Rails.cache.fetch cache_key, expires_in: CacheTtl do
-        query_params = DefaultParams[:link_api].merge(url: CGI.escape(url), id: publisher_id)
-        path         = [Endpoints[:link_api], URI.encode_www_form(params)].join('?')
-        response     = @mechanize.head(path)
+      raise StandardError, "Unexpected response code: #{response.code}" unless response.code == '302'
 
-        raise StandardError, "Unexpected response code: #{response.code}" unless response.code == '302'
-
-        redirect_location = response['location']
-        case redirect_location
-        when url, %r(http://www\.google\.com/search\?q=)
-          nil
-        else
-          redirect_location
-        end
+      redirect_location = response['location']
+      case redirect_location
+      when url, %r(http://www\.google\.com/search\?q=)
+        nil
+      else
+        redirect_location
       end
     end
   end

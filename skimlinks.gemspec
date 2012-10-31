@@ -30,4 +30,6 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'mechanize', '~> 2.5.1'
   gem.add_dependency 'rest-client', '~> 1.6.7'
+  gem.add_dependency 'activesupport', '~> 3.0'
+  gem.add_dependency 'activemodel', '~> 3.0'
 end
