@@ -14,7 +14,7 @@ end
 
 require 'skimlinks/version'
 require 'skimlinks/configuration'
-require 'skimlinks/api'
+require 'skimlinks/client'
 require 'skimlinks/merchant'
 require 'skimlinks/merchant_search'
 require 'skimlinks/product'

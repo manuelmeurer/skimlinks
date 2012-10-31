@@ -39,13 +39,13 @@ module Skimlinks
         self.send "#{k}=", v
       end
 
-      @api = Skimlinks::Api.new
+      @client = Skimlinks::Client.new
     end
 
     class << self
       def category_list
         Hash[
-          Skimlinks::Api.new.product_categories
+          Skimlinks::Client.new.product_categories
             .invert
             .sort
             .map { |category, id| [category, id.to_i] }
@@ -85,7 +85,7 @@ module Skimlinks
         :start        => (@page.to_i - 1) * @rows
       }
 
-      @product_count, product_data = @api.product_search(params)
+      @product_count, product_data = @client.product_search(params)
 
       Product.build_from_api_response(product_data)
     end

@@ -8,7 +8,7 @@ module Skimlinks
       end
 
       @exclude_no_products = false if @exclude_no_products.nil?
-      @api = Skimlinks::Api.new
+      @client = Skimlinks::Client.new
     end
 
     def merchant(id)
@@ -16,14 +16,14 @@ module Skimlinks
     end
 
     def merchants
-      merchant_data = @api.merchant_category_ids.map do |category_id|
+      merchant_data = @client.merchant_category_ids.map do |category_id|
         self.merchants_in_category(category_id)
       end.flatten.uniq
       Merchant.build_from_api_response(merchant_data)
     end
 
     def merchants_in_category(category_id)
-      @api.merchants(category_id, @locale, @exclude_no_products)
+      @client.merchants(category_id, @locale, @exclude_no_products)
     end
   end
 end

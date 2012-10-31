@@ -31,7 +31,7 @@ module Skimlinks
 
       def affiliate_url(url, publisher_id = nil)
         publisher_id ||= Settings.skimlinks.publisher_id
-        Skimlinks::Api.new.affiliate url, publisher_id
+        Skimlinks::Client.new.affiliate url, publisher_id
       end
     end
 

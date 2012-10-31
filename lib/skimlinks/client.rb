@@ -3,7 +3,7 @@ require 'rest-client'
 require 'mechanize'
 
 module Skimlinks
-  class Api
+  class Client
     Endpoints = {
       :product_api  => 'http://api-product.skimlinks.com/',
       :merchant_api => 'http://api-merchants.skimlinks.com/merchants/',
@@ -40,7 +40,15 @@ module Skimlinks
       ]
     }
 
-    def initialize
+    attr_accessor *Configuration::VALID_CONFIG_KEYS
+
+    def initialize(args = {})
+      options = Skimlinks.configuration.options.merge(args)
+
+      Configuration::VALID_CONFIG_KEYS.each do |key|
+        self.send "#{key}=", options[key]
+      end
+
       @product_api  = RestClient::Resource.new(Endpoints[:product_api])
       @merchant_api = RestClient::Resource.new(Endpoints[:merchant_api])
       @mechanize    = Mechanize.new do |m|
@@ -126,8 +134,6 @@ module Skimlinks
     def affiliate(url, publisher_id)
       link_api url, publisher_id
     end
-
-    private
 
     private
 

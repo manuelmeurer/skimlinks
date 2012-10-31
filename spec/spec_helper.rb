@@ -1,6 +1,7 @@
 require 'skimlinks'
 require 'webmock/rspec'
 require 'vcr'
+require 'ffaker'
 
 VCR.configure do |config|
   config.hook_into :webmock
