@@ -5,19 +5,19 @@ require 'mechanize'
 module Skimlinks
   class Api
     Endpoints = {
-      product_api:  'http://api-product.skimlinks.com/',
-      merchant_api: 'http://api-merchants.skimlinks.com/merchants/',
-      link_api:     'http://go.productwidgets.com/'
+      :product_api  => 'http://api-product.skimlinks.com/',
+      :merchant_api => 'http://api-merchants.skimlinks.com/merchants/',
+      :link_api     => 'http://go.productwidgets.com/'
     }
     DefaultParams = {
-      product_api: {
-        format: 'json'
+      :product_api => {
+        :format => 'json'
       },
-      merchant_api: {
-        format: 'json'
+      :merchant_api => {
+        :format => 'json'
       },
-      link_api: {
-        xs: 1
+      :link_api => {
+        :xs => 1
       }
     }
     RequiredParams = %w(
@@ -30,11 +30,11 @@ module Skimlinks
       category_ids
     )
     LocaleMerchantCountries = {
-      uk: [
+      :uk => [
         'united kingdom',
         'international'
       ],
-      us: [
+      :us => [
         'united states',
         'international'
       ]
@@ -64,7 +64,7 @@ module Skimlinks
         # TODO: Check for categoryId 0, '' or nil, missing categoryId
 
         query_params = {
-          q: CGI.escape(api_query.join(' AND '))
+          :q => CGI.escape(api_query.join(' AND '))
         }
         query_params[:rows]  = params[:rows]  if params[:rows].present?
         query_params[:start] = params[:start] if params[:start].present?
@@ -74,7 +74,7 @@ module Skimlinks
     end
 
     def product_count(params)
-      product_search(params.merge(rows: 0)).first
+      product_search(params.merge(:rows => 0)).first
     end
 
     def product_categories
@@ -105,7 +105,7 @@ module Skimlinks
 
           # Add product count for each merchant
           data['merchants'].each do |merchant|
-            merchant.merge! 'productCount' => self.product_count(merchant_id: merchant['merchantID'])
+            merchant.merge! 'productCount' => self.product_count(:merchant_id => merchant['merchantID'])
           end
 
           # Exclude merchants without any products
@@ -156,7 +156,7 @@ module Skimlinks
     end
 
     def product_api(method, params = {})
-      query_params = DefaultParams[:product_api].merge(params).reverse_merge(key: Skimlinks.configuration.api_key)
+      query_params = DefaultParams[:product_api].merge(params).reverse_merge(:key => Skimlinks.configuration.api_key)
 
       raise Skimlinks::ApiError, 'API key not configured' if query_params[:key].blank?
 
@@ -183,7 +183,7 @@ module Skimlinks
     end
 
     def link_api(url, publisher_id)
-      query_params = DefaultParams[:link_api].merge(url: CGI.escape(url), id: publisher_id)
+      query_params = DefaultParams[:link_api].merge(:url => CGI.escape(url), :id => publisher_id)
       path         = [Endpoints[:link_api], URI.encode_www_form(params)].join('?')
       response     = @mechanize.head(path)
 

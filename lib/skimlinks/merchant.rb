@@ -8,17 +8,17 @@ module Skimlinks
       def build_from_api_response(merchant_data)
         merchant_data.map do |merchant|
           self.new \
-            id:                      merchant['merchantID'].to_i,
-            name:                    merchant['merchantName'].presence,
-            preferred:               HashWithIndifferentAccess.new(merchant['preferred']),
-            updated_at:              merchant['dateUpdated'].present? ? Time.parse(merchant['dateUpdated']) : nil,
-            average_conversion_rate: merchant['averageConversionRate'].presence,
-            average_commission:      merchant['averageCommission'].presence,
-            logo_url:                merchant['logo'].presence,
-            domains:                 HashWithIndifferentAccess.new(merchant['domains']),
-            categories:              HashWithIndifferentAccess.new(merchant['categories']),
-            countries:               Array(merchant['countries'].presence),
-            product_count:           merchant['productCount'].to_i
+            :id                      => merchant['merchantID'].to_i,
+            :name                    => merchant['merchantName'].presence,
+            :preferred               => HashWithIndifferentAccess.new(merchant['preferred']),
+            :updated_at              => merchant['dateUpdated'].present? ? Time.parse(merchant['dateUpdated']) : nil,
+            :average_conversion_rate => merchant['averageConversionRate'].presence,
+            :average_commission      => merchant['averageCommission'].presence,
+            :logo_url                => merchant['logo'].presence,
+            :domains                 => HashWithIndifferentAccess.new(merchant['domains']),
+            :categories              => HashWithIndifferentAccess.new(merchant['categories']),
+            :countries               => Array(merchant['countries'].presence),
+            :product_count           => merchant['productCount'].to_i
         end.sort_by(&:name)
       end
     end
