@@ -28,6 +28,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'guard', '~> 1.5.2'
   gem.add_development_dependency 'guard-rspec', '~> 2.1.1'
 
+  gem.add_dependency 'json', '~> 1.7.5'
   gem.add_dependency 'mechanize', '~> 2.5.1'
   gem.add_dependency 'rest-client', '~> 1.6.7'
   gem.add_dependency 'activesupport', '~> 3.0'
