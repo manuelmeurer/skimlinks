@@ -6,11 +6,11 @@ module Skimlinks
       def build_from_api_response(product_data)
         product_data.map do |product|
           description = HTML::FullSanitizer.new.sanitize( # Strip tags
-            product['description']
-              .strip                     # Remove leading and trailing whitespace
-              .gsub(%r(<br\s?/?>), "\n") # Replace <br> by \n
-              .gsub(%r(</p>), "\n")      # Replace </p> by \n
-              .gsub(/\n+/, "\n")         # Replace multiple \n's by single ones
+            product['description'].
+              strip.                     # Remove leading and trailing whitespace
+              gsub(%r(<br\s?/?>), "\n"). # Replace <br> by \n
+              gsub(%r(</p>), "\n").      # Replace </p> by \n
+              gsub(/\n+/, "\n")          # Replace multiple \n's by single ones
           )
 
           category = ProductSearch.category_list.invert[product['categorisation']['categoryId'].to_i] || 'empty'
