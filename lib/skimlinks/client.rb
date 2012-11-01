@@ -1,4 +1,3 @@
-require 'json'
 require 'rest-client'
 require 'mechanize'
 
