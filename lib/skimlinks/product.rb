@@ -16,16 +16,16 @@ module Skimlinks
           category = ProductSearch.category_list.invert[product['categorisation']['categoryId'].to_i] || 'empty'
 
           self.new \
-            :id          => product['id'],
-            :name        => product['title'],
-            :url         => product['url'],
-            :description => description,
-            :merchant    => product['merchant'],
-            :country     => product['country'],
-            :price       => product['price'],
-            :currency    => product['currency'].downcase,
-            :category    => category,
-            :image_urls  => product['imageUrl'].present? ? [URI(product['imageUrl'])] : []
+            id:          product['id'],
+            name:        product['title'],
+            url:         product['url'],
+            description: description,
+            merchant:    product['merchant'],
+            country:     product['country'],
+            price:       product['price'],
+            currency:    product['currency'].downcase,
+            category:    category,
+            image_urls:  product['imageUrl'].present? ? [URI(product['imageUrl'])] : []
         end
       end
 

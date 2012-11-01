@@ -26,9 +26,9 @@ module Skimlinks
 
     attr_accessor :ids, :query, :category, :page, :locale, :merchant_id, :min_price, :max_price, :rows
 
-    validates :page, :presence => true, :numericality => true
-    validates :locale, :presence => true, :inclusion => LOCALES
-    validates :rows, :presence => true, :numericality => true
+    validates :page, presence: true, numericality: true
+    validates :locale, presence: true, inclusion: LOCALES
+    validates :rows, presence: true, numericality: true
 
     validate do
       self.errors.add :base, "One of these params must be set: #{REQUIRED_PARAMS.join(', ')}" if REQUIRED_PARAMS.all? { |param| instance_variable_get("@#{param}").blank? }
@@ -74,15 +74,15 @@ module Skimlinks
       end
 
       params = {
-        :ids          => @ids,
-        :query        => @query,
-        :merchant_id  => @merchant_id,
-        :locale       => @locale,
-        :min_price    => @min_price,
-        :max_price    => @max_price,
-        :category_ids => category_ids,
-        :rows         => @rows,
-        :start        => (@page.to_i - 1) * @rows
+        ids:          @ids,
+        query:        @query,
+        merchant_id:  @merchant_id,
+        locale:       @locale,
+        min_price:    @min_price,
+        max_price:    @max_price,
+        category_ids: category_ids,
+        rows:         @rows,
+        start:        (@page.to_i - 1) * @rows
       }
 
       @product_count, product_data = @client.product_search(params)
