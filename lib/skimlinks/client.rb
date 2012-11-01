@@ -9,15 +9,6 @@ module Skimlinks
       :merchant_api => 'http://api-merchants.skimlinks.com/merchants/',
       :link_api     => 'http://go.productwidgets.com/'
     }
-    PRODUCT_SEARCH_REQUIRED_PARAMS = %w(
-      ids
-      query
-      locale
-      min_price
-      max_price
-      merchant_id
-      category_ids
-    )
     LOCALE_MERCHANT_COUNTRIES = {
       :uk => [
         'united kingdom',
@@ -47,8 +38,6 @@ module Skimlinks
     end
 
     def product_search(params)
-      raise StandardError, "One of these params must be set: #{PRODUCT_SEARCH_REQUIRED_PARAMS.join(', ')}" if PRODUCT_SEARCH_REQUIRED_PARAMS.all? { |param| params[param.to_sym].blank? }
-
       returning_count_and_products do
         api_query = []
         api_query << %(id:(#{params[:ids].join(' ')}))                                                          if params[:ids].present?
