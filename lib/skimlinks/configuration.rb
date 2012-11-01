@@ -20,7 +20,7 @@ module Skimlinks
 
     def reset
       VALID_CONFIG_KEYS.each do |key|
-        self.send "#{key}=", self.class.const_get("DEFAULT_#{key.to_s.upcase}")
+        self.send "#{key}=", self.class.const_get("DEFAULT_#{key.upcase}")
       end
     end
   end
