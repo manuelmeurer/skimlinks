@@ -10,11 +10,11 @@ module Skimlinks
 
     include ActiveModel::Validations
 
-    Locales = %w(
+    LOCALES = %w(
       us
       uk
     )
-    RequiredParams = %w(
+    REQUIRED_PARAMS = %w(
       ids
       query
       locale
@@ -27,11 +27,11 @@ module Skimlinks
     attr_accessor :ids, :query, :category, :page, :locale, :merchant_id, :min_price, :max_price, :rows
 
     validates :page, :presence => true, :numericality => true
-    validates :locale, :presence => true, :inclusion => Locales
+    validates :locale, :presence => true, :inclusion => LOCALES
     validates :rows, :presence => true, :numericality => true
 
     validate do
-      self.errors.add :base, "One of these params must be set: #{RequiredParams.join(', ')}" if RequiredParams.all? { |param| instance_variable_get("@#{param}").blank? }
+      self.errors.add :base, "One of these params must be set: #{REQUIRED_PARAMS.join(', ')}" if REQUIRED_PARAMS.all? { |param| instance_variable_get("@#{param}").blank? }
     end
 
     def initialize(args = {})
