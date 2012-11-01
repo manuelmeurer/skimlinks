@@ -8,7 +8,7 @@ A simple wrapper around the [Skimlinks APIs](http://skimlinks.com/apis)
 
 ## Requirements
 
-Requires Ruby > 1.9.2
+Requires Ruby 1.9.2 or higher
 
 ## Installation
 
