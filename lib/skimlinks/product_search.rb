@@ -45,10 +45,10 @@ module Skimlinks
     class << self
       def category_list
         Hash[
-          Skimlinks::Client.new.product_categories.
-            invert.
-            sort.
-            map { |category, id| [category, id.to_i] }
+          Skimlinks::Client.new.product_categories
+            .invert
+            .sort
+            .map { |category, id| [category, id.to_i] }
         ]
       end
 
