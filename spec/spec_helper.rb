@@ -22,3 +22,19 @@ RSpec.configure do |config|
   # Make VCR macros available to all specs
   config.extend VCR::RSpec::Macros
 end
+
+def valid_value_for_config(key)
+  valid_values_const_name = "VALID_#{key.to_s.pluralize.upcase}"
+  if Skimlinks::Configuration.const_defined?(valid_values_const_name)
+    valid_values = Skimlinks::Configuration.const_get(valid_values_const_name)
+    if valid_values == Fixnum
+      rand(1_000)
+    elsif valid_values.is_a?(Array)
+      Skimlinks::Configuration.const_get(valid_values_const_name).sample
+    else
+      raise StandardError, "Unexpected #{valid_values_const_name} type: #{valid_values}"
+    end
+  else
+    Faker::Lorem.word
+  end
+end

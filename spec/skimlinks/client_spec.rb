@@ -5,7 +5,7 @@ describe Skimlinks::Client do
     [:module_config, :class_config].each do |config|
       let(config) {
         Hash[
-          *Skimlinks::Configuration::VALID_CONFIG_KEYS.map { |key| [key, Faker::Lorem.word] }.flatten
+          *Skimlinks::Configuration::VALID_CONFIG_KEYS.map { |key| [key, valid_value_for_config(key)] }.flatten
         ]
       }
     end

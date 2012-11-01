@@ -8,12 +8,7 @@ describe Skimlinks::Configuration do
   describe '.configure' do
     Skimlinks::Configuration::VALID_CONFIG_KEYS.each do |key|
       it "should set the #{key}" do
-        valid_values_const_name = "VALID_#{key.to_s.pluralize.upcase}"
-        value = if Skimlinks::Configuration.const_defined?(valid_values_const_name)
-          Skimlinks::Configuration.const_get(valid_values_const_name).sample
-        else
-          Faker::Lorem.word
-        end
+        value = valid_value_for_config(key)
         Skimlinks.configure do |config|
           config.send "#{key}=", value
         end
