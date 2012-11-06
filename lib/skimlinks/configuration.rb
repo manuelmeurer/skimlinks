@@ -1,5 +1,6 @@
 require 'active_support/core_ext/string'
 require 'active_support/core_ext/numeric'
+require 'active_support/cache'
 
 module Skimlinks
   class Configuration
@@ -11,8 +12,15 @@ module Skimlinks
     ]
 
     VALID_FORMATS = [
-      :xml,
+      # :xml, # TODO: Enable this when XML is supported
       :json
+    ]
+    VALID_CACHE_CLASSES = [
+      NilClass,
+      ActiveSupport::Cache::Store
+    ]
+    VALID_CACHE_TTL_CLASSES = [
+      Fixnum
     ]
 
     DEFAULT_API_KEY    = nil

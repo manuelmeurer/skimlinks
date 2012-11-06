@@ -24,15 +24,23 @@ RSpec.configure do |config|
 end
 
 def valid_value_for_config(key)
-  valid_values_const_name = "VALID_#{key.to_s.pluralize.upcase}"
-  if Skimlinks::Configuration.const_defined?(valid_values_const_name)
+  valid_values_const_name        = "VALID_#{key.to_s.pluralize.upcase}"
+  valid_value_classes_const_name = "VALID_#{key.to_s.upcase}_CLASSES"
+  case
+  when Skimlinks::Configuration.const_defined?(valid_values_const_name)
     valid_values = Skimlinks::Configuration.const_get(valid_values_const_name)
-    if valid_values == Fixnum
+    raise StandardError, "#{valid_values_const_name} should be an array." unless valid_values.is_a?(Array)
+    valid_values.sample
+  when Skimlinks::Configuration.const_defined?(valid_value_classes_const_name)
+    valid_value_classes = Skimlinks::Configuration.const_get(valid_value_classes_const_name)
+    raise StandardError, "#{valid_value_classes_const_name} should be an array of classes." unless valid_value_classes.is_a?(Array) && valid_value_classes.each { |klass| klass.is_a?(Class) }
+    case
+    when valid_value_classes.include?(NilClass)
+      nil
+    when valid_value_classes.include?(Fixnum)
       rand(1_000)
-    elsif valid_values.is_a?(Array)
-      Skimlinks::Configuration.const_get(valid_values_const_name).sample
     else
-      raise StandardError, "Unexpected #{valid_values_const_name} type: #{valid_values}"
+      raise StandardError, "Don't know how to create valid value for config #{key}."
     end
   else
     Faker::Lorem.word
