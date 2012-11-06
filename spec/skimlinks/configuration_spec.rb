@@ -7,7 +7,7 @@ describe Skimlinks::Configuration do
 
   describe '.configure' do
     Skimlinks::Configuration::VALID_CONFIG_KEYS.each do |key|
-      it "should set the #{key}" do
+      it "sets the #{key}" do
         value = valid_value_for_config(key)
         Skimlinks.configure do |config|
           config.send "#{key}=", value
@@ -19,7 +19,7 @@ describe Skimlinks::Configuration do
 
   Skimlinks::Configuration::VALID_CONFIG_KEYS.each do |key|
     describe "##{key}" do
-      it 'should return the default value' do
+      it 'returns the default value' do
         Skimlinks.configuration.send(key).should eq(Skimlinks::Configuration.const_get("DEFAULT_#{key.upcase}"))
       end
     end
