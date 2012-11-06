@@ -11,6 +11,7 @@ module Skimlinks
     include ActiveModel::Validations
 
     LOCALES = %w(
+      de
       us
       uk
     )
