@@ -75,7 +75,7 @@ module Skimlinks
       flatten(self.merchant_categories).grep(/^\d+$/).uniq.map(&:to_i)
     end
 
-    def merchants(category_id, locale, exclude_no_products)
+    def merchants(category_id, locale, exclude_no_products = false, include_product_count = false)
       [].tap do |merchants|
         start, found = 0, nil
 
@@ -90,8 +90,10 @@ module Skimlinks
           end
 
           # Add product count for each merchant
-          data['merchants'].each do |merchant|
-            merchant.merge! 'productCount' => self.product_count(merchant_id: merchant['merchantID'])
+          if include_product_count
+            data['merchants'].each do |merchant|
+              merchant.merge! 'productCount' => self.product_count(merchant_id: merchant['merchantID'])
+            end
           end
 
           # Exclude merchants without any products
