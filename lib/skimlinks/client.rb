@@ -156,7 +156,7 @@ module Skimlinks
         cache_key = [
           'skimlinks',
           'api',
-          Digest::MD5.hexdigest(api.to_s << path)
+          Digest::MD5.hexdigest(api.to_s + path)
         ].join(':')
         cache_options = Skimlinks.configuration.cache_ttl > 0 ? { expires_in: Skimlinks.configuration.cache_ttl } : {}
         Skimlinks.configuration.cache.fetch cache_key, cache_options do
