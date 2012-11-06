@@ -23,10 +23,10 @@ module Skimlinks
       Fixnum
     ]
 
-    DEFAULT_API_KEY    = nil
-    DEFAULT_FORMAT     = :json
-    DEFAULT_CACHE      = nil
-    DEFAULT_CACHE_TTL  = 1.day
+    DEFAULT_API_KEY   = nil
+    DEFAULT_FORMAT    = :json
+    DEFAULT_CACHE     = nil
+    DEFAULT_CACHE_TTL = 1.day
 
     attr_accessor *VALID_CONFIG_KEYS
 
