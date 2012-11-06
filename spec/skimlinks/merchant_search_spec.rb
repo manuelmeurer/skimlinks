@@ -4,7 +4,7 @@ describe Skimlinks::MerchantSearch do
   use_vcr_cassette
 
   before do
-    Skimlinks.configuration.api_key = '85399dc089e6baf58e1d664670f4614e'
+    Skimlinks.configuration.api_key = 'foo'
   end
 
   describe '#merchants_in_category' do

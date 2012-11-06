@@ -307,7 +307,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 16:54:51 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/1/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/1/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -463,7 +463,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:30:51 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/categories
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/categories
     body:
       encoding: US-ASCII
       string: ''
@@ -538,7 +538,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:30:52 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/2/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/2/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -860,7 +860,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:30:52 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/3/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/3/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -1132,7 +1132,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:30:53 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/4/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/4/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -1437,7 +1437,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:30:53 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/5/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/5/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -1750,7 +1750,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:30:57 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/6/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/6/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -1845,7 +1845,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:30:58 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/7/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/7/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -2434,7 +2434,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:00 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/8/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/8/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -3029,7 +3029,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:02 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/9/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/9/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -3584,7 +3584,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:05 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/10/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/10/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -4175,7 +4175,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:08 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/11/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/11/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -4768,7 +4768,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:10 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/12/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/12/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -5339,7 +5339,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:12 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/13/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/13/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -5921,7 +5921,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:15 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/14/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/14/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -6061,7 +6061,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:16 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/15/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/15/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -6405,7 +6405,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:18 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/16/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/16/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -6528,7 +6528,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:18 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/17/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/17/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -6685,7 +6685,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:19 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/18/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/18/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -7283,7 +7283,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:21 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/19/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/19/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -7846,7 +7846,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:24 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/20/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/20/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -8335,7 +8335,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:26 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/21/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/21/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -8894,7 +8894,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:28 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/22/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/22/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -9440,7 +9440,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:31 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/23/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/23/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -9962,7 +9962,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:33 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/24/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/24/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -10516,7 +10516,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:35 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/25/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/25/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -11100,7 +11100,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:37 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/26/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/26/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -11354,7 +11354,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:38 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/27/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/27/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -11637,7 +11637,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:41 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/28/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/28/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -11842,7 +11842,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:43 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/29/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/29/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -12031,7 +12031,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:44 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/30/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/30/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -12229,7 +12229,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:46 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/31/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/31/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -12373,7 +12373,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:47 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/32/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/32/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -12648,7 +12648,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:49 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/33/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/33/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -13028,7 +13028,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:51 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/34/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/34/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -13339,7 +13339,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:53 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/35/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/35/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -13644,7 +13644,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:56 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/36/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/36/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -13977,7 +13977,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:31:59 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/37/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/37/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -14343,7 +14343,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:01 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/38/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/38/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -14699,7 +14699,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:03 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/39/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/39/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -15043,7 +15043,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:05 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/40/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/40/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -15464,7 +15464,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:08 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/41/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/41/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -15869,7 +15869,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:11 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/42/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/42/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -16236,7 +16236,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:14 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/43/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/43/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -16667,7 +16667,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:16 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/44/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/44/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -17025,7 +17025,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:18 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/45/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/45/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -17389,7 +17389,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:21 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/46/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/46/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -17767,7 +17767,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:23 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/47/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/47/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -18084,7 +18084,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:24 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/48/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/48/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -18480,7 +18480,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:26 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/49/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/49/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -18703,7 +18703,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:28 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/50/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/50/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -18941,7 +18941,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:29 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/51/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/51/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -19029,7 +19029,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:30 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/52/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/52/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -19379,7 +19379,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:31 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/53/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/53/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -19549,7 +19549,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:32 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/54/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/54/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -19885,7 +19885,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:35 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/55/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/55/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -20180,7 +20180,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:36 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/56/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/56/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -20298,7 +20298,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:37 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/57/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/57/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -20701,7 +20701,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:38 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/611/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/611/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -20870,7 +20870,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:39 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/612/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/612/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -20937,7 +20937,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:40 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/613/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/613/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -21079,7 +21079,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:40 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/614/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/614/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -21191,7 +21191,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:41 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/615/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/615/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -21299,7 +21299,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:42 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/616/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/616/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -21406,7 +21406,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:42 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/617/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/617/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -21497,7 +21497,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:43 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/618/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/618/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -21621,7 +21621,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:44 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/619/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/619/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -21688,7 +21688,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:44 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/620/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/620/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -21850,7 +21850,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:45 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/621/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/621/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -21927,7 +21927,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:45 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/622/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/622/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
@@ -22012,7 +22012,7 @@ http_interactions:
   recorded_at: Tue, 06 Nov 2012 17:32:46 GMT
 - request:
     method: get
-    uri: http://api-merchants.skimlinks.com/merchants/json/85399dc089e6baf58e1d664670f4614e/category/623/limit/200/start/0
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/category/623/limit/200/start/0
     body:
       encoding: US-ASCII
       string: ''
