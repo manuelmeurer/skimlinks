@@ -10,6 +10,10 @@ module Skimlinks
       link_api:     'http://go.productwidgets.com/'
     }
     LOCALE_MERCHANT_COUNTRIES = {
+      de: [
+        'germany',
+        'international'
+      ],
       uk: [
         'united kingdom',
         'international'
