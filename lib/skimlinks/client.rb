@@ -141,6 +141,32 @@ module Skimlinks
       [result['numFound'], result['products']]
     end
 
+    def get(api, path)
+      raise Skimlinks::ApiError, 'Only JSON format is supported right now.' unless Skimlinks.configuration.format == :json
+
+      do_get = lambda do
+        returning_json do
+          api[path].get
+        end
+      end
+
+      if Skimlinks.configuration.cache.nil?
+        do_get.call
+      else
+        cache_key = [
+          'skimlinks',
+          'api',
+          Digest::MD5.hexdigest(api.to_s << path)
+        ].join(':')
+        cache_options = Skimlinks.configuration.cache_ttl > 0 ? { expires_in: Skimlinks.configuration.cache_ttl } : {}
+        Skimlinks.configuration.cache.fetch cache_key, cache_options do
+          do_get.call
+        end
+      end
+    rescue RestClient::Exception => e
+      raise Skimlinks::ApiError, e.message
+    end
+
     def product_api(method, params = {})
       query_params = params.reverse_merge(
         format: Skimlinks.configuration.format,
@@ -151,24 +177,20 @@ module Skimlinks
 
       path = [method, URI.encode_www_form(query_params)].join('?')
 
-      returning_json do
-        @product_api[path].get
-      end
+      get @product_api, path
     end
 
     def merchant_api(method, *params)
       raise Skimlinks::ApiError, 'API key not configured' if Skimlinks.configuration.api_key.blank?
 
-      returning_json do
-        path = [
-          Skimlinks.configuration.format,
-          Skimlinks.configuration.api_key,
-          method,
-          *params
-        ].join('/')
+      path = [
+        Skimlinks.configuration.format,
+        Skimlinks.configuration.api_key,
+        method,
+        *params
+      ].join('/')
 
-        @merchant_api[path].get
-      end
+      get @merchant_api, path
     end
 
     def link_api(url, publisher_id)

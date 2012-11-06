@@ -1,10 +1,13 @@
 require 'active_support/core_ext/string'
+require 'active_support/core_ext/numeric'
 
 module Skimlinks
   class Configuration
     VALID_CONFIG_KEYS = [
       :api_key,
-      :format
+      :format,
+      :cache,
+      :cache_ttl
     ]
 
     VALID_FORMATS = [
@@ -12,8 +15,10 @@ module Skimlinks
       :json
     ]
 
-    DEFAULT_API_KEY = nil
-    DEFAULT_FORMAT  = :json
+    DEFAULT_API_KEY    = nil
+    DEFAULT_FORMAT     = :json
+    DEFAULT_CACHE      = nil
+    DEFAULT_CACHE_TTL  = 1.day
 
     attr_accessor *VALID_CONFIG_KEYS
 
