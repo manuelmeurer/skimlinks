@@ -45,16 +45,21 @@ module Skimlinks
     end
 
     VALID_CONFIG_KEYS.each do |key|
-      valid_values_const_name = "VALID_#{key.to_s.pluralize.upcase}"
-      if self.const_defined?(valid_values_const_name)
+      valid_values_const_name        = "VALID_#{key.to_s.pluralize.upcase}"
+      valid_value_classes_const_name = "VALID_#{key.to_s.upcase}_CLASSES"
+      case
+      when self.const_defined?(valid_values_const_name)
         valid_values = self.const_get(valid_values_const_name)
+        raise StandardError, "#{valid_values_const_name} should be an array." unless valid_values.is_a?(Array)
         define_method "#{key}=" do |value|
-          if valid_values.is_a?(Class)
-            raise ArgumentError, "#{value} is not a valid value for #{key}. Valid values must be a #{valid_values}." unless value.is_a?(valid_values)
-          else
-            raise ArgumentError, "#{value} is not a valid value for #{key}. Valid values are: #{valid_values.join(', ')}" unless valid_values.include?(value)
-          end
-
+          raise ArgumentError, "#{value} is not a valid value for #{key}. Valid values are: #{valid_values.join(', ')}" unless valid_values.include?(value)
+          self.instance_variable_set "@#{key}", value
+        end
+      when self.const_defined?(valid_value_classes_const_name)
+        valid_value_classes = self.const_get(valid_value_classes_const_name)
+        raise StandardError, "#{valid_value_classes_const_name} should be an array of classes." unless valid_value_classes.is_a?(Array) && valid_value_classes.each { |klass| klass.is_a?(Class) }
+        define_method "#{key}=" do |value|
+          raise ArgumentError, "#{value} is not a valid value for #{key}. Valid values classes are: #{valid_value_classes.join(', ')}" unless valid_value_classes.any? { |klass| value.class <= klass }
           self.instance_variable_set "@#{key}", value
         end
       end
