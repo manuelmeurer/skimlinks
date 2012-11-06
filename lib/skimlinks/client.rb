@@ -168,12 +168,12 @@ module Skimlinks
     end
 
     def product_api(method, params = {})
+      raise Skimlinks::ApiError, 'API key not configured' if Skimlinks.configuration.api_key.blank?
+
       query_params = params.reverse_merge(
         format: Skimlinks.configuration.format,
         key:    Skimlinks.configuration.api_key
       )
-
-      raise Skimlinks::ApiError, 'API key not configured' if query_params[:key].blank?
 
       path = [method, URI.encode_www_form(query_params)].join('?')
 
@@ -198,7 +198,7 @@ module Skimlinks
       path         = [API_ENDPOINTS[:link_api], URI.encode_www_form(query_params)].join('?')
       response     = @mechanize.head(path)
 
-      raise StandardError, "Unexpected response code: #{response.code}" unless response.code == '302'
+      raise Skimlinks::ApiError, "Unexpected response code: #{response.code}" unless response.code == '302'
 
       redirect_location = response['location']
       case redirect_location
