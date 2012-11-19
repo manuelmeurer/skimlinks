@@ -24,7 +24,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'webmock', '~> 1.8.11'
   gem.add_development_dependency 'vcr', '~> 2.3.0'
   gem.add_development_dependency 'ffaker', '~> 1.15.0'
-  gem.add_development_dependency 'rake', '~> 0.10.0'
+  gem.add_development_dependency 'rake', '~> 10.0.1'
   gem.add_development_dependency 'rb-fsevent', '~> 0.9.2'
   gem.add_development_dependency 'guard', '~> 1.5.2'
   gem.add_development_dependency 'guard-rspec', '~> 2.1.2'
