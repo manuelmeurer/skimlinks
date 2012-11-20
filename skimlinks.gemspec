@@ -21,7 +21,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
 
   gem.add_development_dependency 'rspec', '~> 2.12.0'
-  gem.add_development_dependency 'webmock', '~> 1.8.11'
+  gem.add_development_dependency 'webmock', '~> 1.9.0'
   gem.add_development_dependency 'vcr', '~> 2.3.0'
   gem.add_development_dependency 'ffaker', '~> 1.15.0'
   gem.add_development_dependency 'rake', '~> 10.0.1'
