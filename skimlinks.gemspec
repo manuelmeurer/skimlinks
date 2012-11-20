@@ -33,4 +33,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'rest-client', '~> 1.6.7'
   gem.add_dependency 'activesupport', '~> 3.0'
   gem.add_dependency 'activemodel', '~> 3.0'
+  gem.add_dependency 'json', '~> 1.7.5'
 end
