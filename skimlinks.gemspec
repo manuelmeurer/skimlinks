@@ -33,5 +33,9 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'rest-client', '~> 1.6.7'
   gem.add_dependency 'activesupport', '~> 3.0'
   gem.add_dependency 'activemodel', '~> 3.0'
-  gem.add_dependency 'json', '~> 1.7.5'
+
+  if RUBY_PLATFORM == 'java'
+    gem.add_dependency 'json-jruby', '~> 1.5.0'
+    gem.add_dependency 'jruby-openssl', '~> 0.7.7'
+  end
 end
