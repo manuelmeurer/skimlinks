@@ -26,7 +26,18 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Skimlinks offers the following APIs:
+
+* The [Product API](http://api-products.skimlinks.com/doc/) to search for products and product categories
+* The [Merchant API](http://api-merchants.skimlinks.com/doc/) to search for merchants and merchant categories
+* The [Link API](http://go.redirectingat.com/doc/) to convert regular URLs into affiliate URLs
+* The [Reporting API](https://api-reports.skimlinks.com/doc/) to receive a history of your earned commissions
+
+This gem currently only implements access to the Product API and Merchant API.
+
+## TODO
+
+* Implement access to Link API and Reporting API
 
 ## Contributing
 
