@@ -11,8 +11,8 @@ Gem::Specification.new do |gem|
   gem.platform      = Gem::Platform::RUBY
   gem.authors       = ['Manuel Meurer']
   gem.email         = 'manuel.meurer@gmail.com'
-  gem.description   = 'A simple wrapper around the Skimlinks APIs'
   gem.summary       = 'A simple wrapper around the Skimlinks APIs'
+  gem.description   = 'A simple wrapper around the Skimlinks APIs'
   gem.homepage      = 'https://github.com/krautcomputing/skimlinks'
 
   gem.files         = `git ls-files`.split($/)
