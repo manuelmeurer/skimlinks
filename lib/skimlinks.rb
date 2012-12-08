@@ -1,5 +1,6 @@
 module Skimlinks
-  class ApiError < StandardError; end
+  ApiError          = Class.new(StandardError)
+  InvalidParameters = Class.new(StandardError)
 
   class << self
     def configure
@@ -16,6 +17,7 @@ require 'skimlinks/version'
 require 'skimlinks/configuration'
 require 'skimlinks/client'
 require 'skimlinks/merchant'
-require 'skimlinks/merchant_search'
 require 'skimlinks/product'
-require 'skimlinks/product_search'
+require 'skimlinks/apis/api_helpers'
+require 'skimlinks/apis/merchant_api'
+require 'skimlinks/apis/product_api'

@@ -41,45 +41,27 @@ module Skimlinks
       end
     end
 
-    def product_search(params)
-      returning_count_and_products do
-        api_query = []
-        api_query << %(id:(#{params[:ids].join(' ')}))                                                          if params[:ids].present?
-        api_query << %((#{%w(title description).map { |field| %(#{field}:"#{params[:query]}") }.join(' OR ')})) if params[:query].present?
-        api_query << %(price:[#{params[:min_price].presence || '*'} TO #{params[:max_price].presence || '*'}])  if params[:min_price].present? || params[:max_price].present?
-        api_query << %(categoryId:(#{params[:category_ids].join(' ')}))                                         if params[:category_ids].present?
-        api_query << %(merchantId:"#{params[:merchant_id]}")                                                    if params[:merchant_id].present?
-        api_query << %(country:"#{params[:locale]}")                                                            if params[:locale].present?
-
-        # TODO: Check for categoryId 0, '' or nil, missing categoryId
-
-        query_params = {
-          q: CGI.escape(api_query.join(' AND '))
-        }
-        query_params[:rows]  = params[:rows]  if params[:rows].present?
-        query_params[:start] = params[:start] if params[:start].present?
-
-        product_api('query', query_params)['skimlinksProductAPI']
-      end
+    def product_search(args)
+      product_count_and_products(args).last
     end
 
-    def product_count(params)
-      product_search(params.merge(rows: 0)).first
+    def product_count(args)
+      product_count_and_products(args.merge(rows: 0)).first
     end
 
     def product_categories
-      product_api('categories')['skimlinksProductAPI']['categories']
+      @product_categories ||= product_api('categories')['skimlinksProductAPI']['categories']
     end
 
     def merchant_categories
-      merchant_api 'categories'
+      @merchant_categories ||= merchant_api('categories')
     end
 
     def merchant_category_ids
-      flatten(self.merchant_categories).grep(/^\d+$/).uniq.map(&:to_i)
+      @merchant_category_ids ||= flatten(self.merchant_categories).grep(/^\d+$/).uniq.map(&:to_i)
     end
 
-    def merchants(category_id, locale, exclude_no_products = false, include_product_count = false)
+    def merchants(category_id, locale = nil, exclude_no_products = false, include_product_count = false)
       [].tap do |merchants|
         start, found = 0, nil
 
@@ -140,13 +122,30 @@ module Skimlinks
       Nokogiri::XML block.call
     end
 
-    def returning_count_and_products(&block)
-      result = block.call
-      [result['numFound'], result['products']]
+    def product_count_and_products(args)
+      api_query = []
+      api_query << %(id:(#{args[:ids].join(' ')}))                                                          if args[:ids].present?
+      api_query << %((#{%w(title description).map { |field| %(#{field}:"#{args[:query]}") }.join(' OR ')})) if args[:query].present?
+      api_query << %(price:[#{args[:min_price].presence || '*'} TO #{args[:max_price].presence || '*'}])    if args[:min_price].present? || args[:max_price].present?
+      api_query << %(categoryId:(#{args[:category_ids].join(' ')}))                                         if args[:category_ids].present?
+      api_query << %(merchantId:"#{args[:merchant_id]}")                                                    if args[:merchant_id].present?
+      api_query << %(country:"#{args[:locale]}")                                                            if args[:locale].present?
+
+      # TODO: Check for categoryId 0, '' or nil, missing categoryId
+
+      query_params = {
+        q: api_query.join(' AND ')
+      }
+      query_params[:rows]  = args[:rows]  if args[:rows].present?
+      query_params[:start] = args[:start] if args[:start].present?
+
+      product_data = product_api('query', query_params)['skimlinksProductAPI']
+
+      [product_data['numFound'], product_data['products']]
     end
 
     def get(api, path)
-      raise Skimlinks::ApiError, 'Only JSON format is supported right now.' unless Skimlinks.configuration.format == :json
+      raise Skimlinks::InvalidParameters, 'Only JSON format is supported right now.' unless Skimlinks.configuration.format == :json
 
       do_get = lambda do
         returning_json do
@@ -168,11 +167,15 @@ module Skimlinks
         end
       end
     rescue RestClient::Exception => e
-      raise Skimlinks::ApiError, e.message
+      message = [e.message].tap do |message_parts|
+        error = JSON.parse(e.response)['skimlinksProductAPI']['message'] rescue nil
+        message_parts << error if error.present?
+      end.join(' - ')
+      raise Skimlinks::ApiError, message
     end
 
     def product_api(method, params = {})
-      raise Skimlinks::ApiError, 'API key not configured' if Skimlinks.configuration.api_key.blank?
+      raise Skimlinks::InvalidParameters, 'API key not configured' if Skimlinks.configuration.api_key.blank?
 
       query_params = params.reverse_merge(
         format: Skimlinks.configuration.format,
@@ -181,11 +184,13 @@ module Skimlinks
 
       path = [method, URI.encode_www_form(query_params)].join('?')
 
-      get @product_api, path
+      get(@product_api, path).tap do |response|
+        raise Skimlinks::InvalidParameters, 'API key is invalid' if response.is_a?(Array) && response.first =~ /^Invalid API key/
+      end
     end
 
     def merchant_api(method, *params)
-      raise Skimlinks::ApiError, 'API key not configured' if Skimlinks.configuration.api_key.blank?
+      raise Skimlinks::InvalidParameters, 'API key not configured' if Skimlinks.configuration.api_key.blank?
 
       path = [
         Skimlinks.configuration.format,
@@ -194,7 +199,9 @@ module Skimlinks
         *params
       ].join('/')
 
-      get @merchant_api, path
+      get(@merchant_api, path).tap do |response|
+        raise Skimlinks::InvalidParameters, 'API key is invalid' if response.is_a?(Array) && response.first =~ /^Invalid API key/
+      end
     end
 
     def link_api(url, publisher_id)

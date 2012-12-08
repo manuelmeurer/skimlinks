@@ -4618,4 +4618,171 @@ http_interactions:
         > Country Music > Americana"}}}'
     http_version:
   recorded_at: Wed, 31 Oct 2012 17:13:15 GMT
+- request:
+    method: get
+    uri: http://api-product.skimlinks.com/query?format=json&key=85399dc089e6baf58e1d664670f4614e&q=(title:%22justin%20bieber%22%20OR%20description:%22justin%20bieber%22)
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 17 Dec 2012 13:12:08 GMT
+      Etag:
+      - ! '"b095bf05853b7403fc0fd7029257b72fa6a03a2b"'
+      Server:
+      - TornadoServer/2.2
+      X-Ratelimit-Limit:
+      - '100'
+      X-Ratelimit-Remaining:
+      - '98'
+      X-Ratelimit-Reset:
+      - '1355749935'
+      Content-Length:
+      - '7258'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{"skimlinksProductAPI": {"status": 200, "numFound": 1740, "message":
+        "OK", "version": 3, "products": [{"merchant": "Amazon", "categorisation":
+        {"merchantCategory": "Refinements/KPEX Feature Refinements/Bucket 04/376304011-3
+        Features (feature_keywords_browse-bin)/40 cm", "categoryGender": "unisex",
+        "categoryAge": "adult", "categoryId": 0}, "description": "Pillow Justin Bieber
+        Design: Justin Bieber (100% Polyester)", "title": "Justin Bieber - Cushion
+        Justin Bieber", "url": "http://www.amazon.co.uk/dp/B0063JZR9G/", "country":
+        "UK", "price": 751, "identifiers": {"mpn": "105615", "sku": "B0063JZR9G",
+        "isbn": "", "upc": "", "ean": ""}, "imageUrl": "http://ecx.images-amazon.com/images/I/41CzTi68LzL._SL160_.jpg",
+        "id": "87866991", "currency": "GBP", "isAccessory": false, "groupId": 0, "imageBad":
+        false, "manufacturer": "", "merchantId": 12679, "productId": "12679|B0063JZR9G"},
+        {"merchant": "Amazon", "categorisation": {"merchantCategory": "Refinements/KPEX
+        Feature Refinements/Bucket 04/376304011-3 Features (feature_keywords_browse-bin)/40
+        cm", "categoryGender": "unisex", "categoryAge": "adult", "categoryId": 0},
+        "description": "Pillow Justin Bieber Design: Justin Bieber (100% Polyester)",
+        "title": "Justin Bieber - Cushion Justin Bieber", "url": "http://www.amazon.co.uk/dp/B004XZCIE4/",
+        "country": "UK", "price": 751, "identifiers": {"mpn": "105615", "sku": "B004XZCIE4",
+        "isbn": "", "upc": "", "ean": ""}, "imageUrl": "http://ecx.images-amazon.com/images/I/41CzTi68LzL._SL160_.jpg",
+        "id": "83663431", "currency": "GBP", "isAccessory": false, "groupId": 0, "imageBad":
+        false, "manufacturer": "", "merchantId": 12679, "productId": "12679|B004XZCIE4"},
+        {"merchant": "Amazon", "categorisation": {"merchantCategory": "Refinements/KPEX
+        Feature Refinements/Bucket 04/376304011-3 Features (feature_keywords_browse-bin)/40
+        cm", "categoryGender": "unisex", "categoryAge": "adult", "categoryId": 0},
+        "description": "Pillow Justin Bieber Design: Justin Bieber (100% Polyester)",
+        "title": "Justin Bieber - Cushion Justin Bieber", "url": "http://www.amazon.co.uk/dp/B004T23DR2/",
+        "country": "UK", "price": 751, "identifiers": {"mpn": "105616", "sku": "B004T23DR2",
+        "isbn": "", "upc": "", "ean": ""}, "imageUrl": "http://ecx.images-amazon.com/images/I/415qeK9y0RL._SL160_.jpg",
+        "id": "152213941", "currency": "GBP", "isAccessory": false, "groupId": 0,
+        "imageBad": false, "manufacturer": "", "merchantId": 12679, "productId": "12679|B004T23DR2"},
+        {"merchant": "Target.com", "categorisation": {"merchantCategory": "ELECTRONICS
+        > Books - MMBV > Books > Books", "categoryGender": "unisex", "categoryAge":
+        "adult", "categoryId": 0}, "description": "Justin Bieber (Paperback)", "title":
+        "Justin Bieber (Paperback)", "url": "http://www.target.com/p/justin-bieber-paperback/-/A-12290371",
+        "country": "US", "price": 499, "identifiers": {"mpn": "9780843199031", "sku":
+        "12290371", "isbn": "", "upc": "9780843199031", "ean": ""}, "imageUrl": "http://img2.targetimg2.com/wcsstore/TargetSAS/img/p/12/29/12290371.jpg",
+        "id": "72748480", "currency": "USD", "isAccessory": true, "groupId": 0, "imageBad":
+        false, "manufacturer": "", "merchantId": 20732, "productId": "20732|12290371"},
+        {"merchant": "Amazon", "categorisation": {"merchantCategory": "Toys & Games/Self
+        Service/Custom Stores/Toys Category Page", "categoryGender": "unisex", "categoryAge":
+        "adult", "categoryId": -1}, "description": "Manufacturer: Justin Bieber",
+        "title": "Justin Bieber Key Ring", "url": "http://www.amazon.co.uk/dp/B0069TH8IS/",
+        "country": "UK", "price": 449, "identifiers": {"mpn": "", "sku": "B0069TH8IS",
+        "isbn": "", "upc": "", "ean": ""}, "imageUrl": "http://ecx.images-amazon.com/images/I/41UzcU1r-ZL._SL160_.jpg",
+        "id": "42542111", "currency": "GBP", "isAccessory": false, "groupId": 0, "imageBad":
+        false, "manufacturer": "", "merchantId": 12679, "productId": "12679|B0069TH8IS"},
+        {"merchant": "Amazon", "categorisation": {"merchantCategory": "Toys & Games/Self
+        Service/Custom Stores/Toys Category Page", "categoryGender": "unisex", "categoryAge":
+        "adult", "categoryId": -1}, "description": "Manufacturer: Justin Bieber",
+        "title": "Justin Bieber Pencil Case", "url": "http://www.amazon.co.uk/dp/B006IUY2NC/",
+        "country": "UK", "price": 749, "identifiers": {"mpn": "", "sku": "B006IUY2NC",
+        "isbn": "", "upc": "", "ean": ""}, "imageUrl": "http://ecx.images-amazon.com/images/I/11Z0Lyd9gOL._SL160_.jpg",
+        "id": "124298541", "currency": "GBP", "isAccessory": false, "groupId": 0,
+        "imageBad": false, "manufacturer": "", "merchantId": 12679, "productId": "12679|B006IUY2NC"},
+        {"merchant": "Amazon", "categorisation": {"merchantCategory": "Toys & Games/Self
+        Service/Custom Stores/Toys Category Page", "categoryGender": "unisex", "categoryAge":
+        "adult", "categoryId": -1}, "description": "Manufacturer: Justin Bieber",
+        "title": "Justin Bieber Mug", "url": "http://www.amazon.co.uk/dp/B0073FDXWC/",
+        "country": "UK", "price": 2199, "identifiers": {"mpn": "", "sku": "B0073FDXWC",
+        "isbn": "", "upc": "", "ean": ""}, "imageUrl": "http://ecx.images-amazon.com/images/I/41DAX2l6xTL._SL160_.jpg",
+        "id": "42888991", "currency": "GBP", "isAccessory": false, "groupId": 0, "imageBad":
+        false, "manufacturer": "", "merchantId": 12679, "productId": "12679|B0073FDXWC"},
+        {"merchant": "Play.com", "categorisation": {"merchantCategory": "Gadgets /
+        GADGET", "categoryGender": "unisex", "categoryAge": "adult", "categoryId":
+        4205}, "description": "Justin Bieber (Live) Poster", "title": "Justin Bieber
+        (Live) Poster", "url": "http://www.play.com/Product.aspx?r=GADG&title=20468288",
+        "country": "UK", "price": 299, "identifiers": {"mpn": "pp32610", "sku": "20468288",
+        "isbn": "", "upc": "", "ean": "5050574326100"}, "imageUrl": "http://images.productserve.com/preview/1418/153122801.jpg",
+        "id": "16378111", "currency": "GBP", "isAccessory": false, "groupId": 0, "imageBad":
+        false, "manufacturer": "", "merchantId": 8286, "productId": "8286|20468288"},
+        {"merchant": "Play.com", "categorisation": {"merchantCategory": "Gadgets /
+        GADGET", "categoryGender": "unisex", "categoryAge": "adult", "categoryId":
+        4205}, "description": "Justin Bieber (Boyfriend)", "title": "Justin Bieber
+        Boyfriend Poster", "url": "http://www.play.com/Product.aspx?r=GADG&title=33428272",
+        "country": "UK", "price": 299, "identifiers": {"mpn": "pp32860", "sku": "33428272",
+        "isbn": "", "upc": "", "ean": "5050574328609"}, "imageUrl": "http://images.productserve.com/preview/1418/569238291.jpg",
+        "id": "177518521", "currency": "GBP", "isAccessory": false, "groupId": 0,
+        "imageBad": false, "manufacturer": "", "merchantId": 8286, "productId": "8286|33428272"},
+        {"merchant": "Amazon", "categorisation": {"merchantCategory": "Toys & Games/Self
+        Service/Custom Stores/Toys Category Page", "categoryGender": "unisex", "categoryAge":
+        "adult", "categoryId": -1}, "description": "Manufacturer: Justin Bieber",
+        "title": "Justin Bieber Street Doll", "url": "http://www.amazon.co.uk/dp/B005C2YUMK/",
+        "country": "UK", "price": 2088, "identifiers": {"mpn": "", "sku": "B005C2YUMK",
+        "isbn": "", "upc": "", "ean": ""}, "imageUrl": "http://ecx.images-amazon.com/images/I/31XU28BPVHL._SL160_.jpg",
+        "id": "233006071", "currency": "GBP", "isAccessory": false, "groupId": 0,
+        "imageBad": false, "manufacturer": "", "merchantId": 12679, "productId": "12679|B005C2YUMK"}]}}'
+    http_version:
+  recorded_at: Mon, 17 Dec 2012 13:12:08 GMT
+- request:
+    method: get
+    uri: http://api-product.skimlinks.com/query?format=json&key=85399dc089e6baf58e1d664670f4614e&q=(title:%22justin%20bieber%22%20OR%20description:%22justin%20bieber%22)&rows=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 17 Dec 2012 13:15:20 GMT
+      Etag:
+      - ! '"4fd781bbf731585b1b1f450592fcb8e07bc732d9"'
+      Server:
+      - TornadoServer/2.2
+      X-Ratelimit-Limit:
+      - '100'
+      X-Ratelimit-Remaining:
+      - '99'
+      X-Ratelimit-Reset:
+      - '1355750130'
+      Content-Length:
+      - '105'
+      Connection:
+      - keep-alive
+    body:
+      encoding: US-ASCII
+      string: ! '{"skimlinksProductAPI": {"status": 200, "numFound": 1740, "message":
+        "OK", "version": 3, "products": []}}'
+    http_version:
+  recorded_at: Mon, 17 Dec 2012 13:15:20 GMT
 recorded_with: VCR 2.3.0
