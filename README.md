@@ -139,6 +139,7 @@ end
 
 #### Get a list of merchant categories
 
+```ruby
 >> Skimlinks::MerchantApi.categories
 
 {
