@@ -43,10 +43,10 @@ Add configurations to `config/initializers/skimlinks.rb`:
 
 ```ruby
 Skimlinks.configure do |config|
-  config.api_key   = 'foobar'       # Mandatory. Get your API key here: https://accounts.skimlinks.com/productapi
-  config.cache     = Rails.cache    # Defaults to nil. Set to an instance of ActiveSupport::Cache::Store to cache the API requests.
-  config.format    = :json          # Defaults to :json. Currently no other setting is supported. In the future it will be possible to set this to :xml to communicate with the API via XML.
-  config.cache_ttl = 10.minutes     # Defaults to 1 day. Set to higher/lower value to cache requests shorter/longer.
+  config.api_key   = 'foobar'       # Your API key (get it here: https://accounts.skimlinks.com/productapi) (mandatory)
+  config.cache     = Rails.cache    # Set to an instance of ActiveSupport::Cache::Store to cache the API requests. (optional, defaults to nil)
+  config.format    = :json          # Currently no other setting is supported. In the future it will be possible to set this to :xml to communicate with the API via XML. (optional, defaults to :json)
+  config.cache_ttl = 10.minutes     # Set to higher/lower value to cache requests shorter/longer. (optional, defaults to 1 day)
 end
 ```
 
@@ -91,14 +91,14 @@ end
 
 ```ruby
 >> Skimlinks::ProductApi.products(
->>   query:       'justin bieber',                   # Search query                                               mandatory
->>   page:        1,                                 # Page                                                       optional (defaults to 1)
->>   rows:        10,                                # Number of rows to return                                   optional (defaults to 10, max 300)
->>   min_price:   100,                               # Minimum price without decimal plance (ie: 100 = $1.00)     optional
->>   max_price:   500,                               # Maximum price without decimal plance (ie: 500 = $5.00)     optional
->>   locale:      'uk',                              # Restrict search to products with a certain locale          optional
->>   merchant_id: 8286,                              # Restrict search to products of a specific merchant         optional
->>   category:    "Toys & Games"                     # Restrict search to products in a certain category          optional
+>>   query:       'justin bieber', # Search query                                           (mandatory)
+>>   page:        1,               # Page                                                   (optional, defaults to 1)
+>>   rows:        10,              # Number of rows to return                               (optional, max. 300, defaults to 10)
+>>   min_price:   100,             # Minimum price without decimal plance (ie: 100 = $1.00) (optional)
+>>   max_price:   500,             # Maximum price without decimal plance (ie: 500 = $5.00) (optional)
+>>   locale:      'uk',            # Restrict search to products with a certain locale      (optional)
+>>   merchant_id: 8286,            # Restrict search to products of a specific merchant     (optional)
+>>   category:    "Toys & Games"   # Restrict search to products in a certain category      (optional)
 >> )
 
 [
@@ -116,7 +116,7 @@ end
 
 ```ruby
 >> Skimlinks::MerchantApi.merchants(
->>   category_ids: [1, 2, 3]                         # Return only merchants in the specificed categories         optional
+>>   category_ids: [1, 2, 3]         # Return only merchants in the specificed categories (optional)
 >> )
 
 [
@@ -131,7 +131,7 @@ end
 
 ```ruby
 >> Skimlinks::MerchantApi.merchant(
->>  12678                                            # Merchant ID                                                mandatory
+>>  12678                           # Merchant ID (mandatory)
 >> )
 
 #<Skimlinks::Merchant:0x00000105204f30 @id=12678, @name="Amazon US", @preferred={"commission"=>"8.5% General products\r\n4% Electronics", "commissionDetails"=>"Was 6% --&gt; NOW 8.5% General products!\r\nWas 3% --&gt; NOW 4% Electronics!", "description"=>"Amazon.com is the global leader in e-commerce.  They launch new product categories and stores around the world as it offers customers greater selection, lower prices, more in-stock merchandise, and a best-in-class shopping experience.", "ecpc"=>"0.00", "featured_commission"=>nil, "pp_enabled"=>"1"}, @updated_at=2012-12-07 01:02:00 +0100, @average_conversion_rate="5.42%", @average_commission="6.36%", @logo_url="http://s.skimresources.com/logos/12678.jpeg", @domains={"6309"=>"amazon.com", "47172"=>"wireless.amazon.com", "119814"=>"amazonsupply.com"}, @categories={"12"=>"consumer electronics;mobiles, pdas & satnav", "50"=>"phones, tv & broadband subscriptions", "8"=>"consumer electronics", "9"=>"consumer electronics;audio, tv & home theatre", "10"=>"consumer electronics;cameras & photos", "11"=>"consumer electronics;gadgets & geeks", "13"=>"consumer electronics;mp3 players & accessories", "18"=>"fashion & accessories", "19"=>"fashion & accessories;belts & bags", "20"=>"fashion & accessories;children's clothing", "21"=>"fashion & accessories;jewelry", "22"=>"fashion & accessories;lingerie & sleepwear", "23"=>"fashion & accessories;men's clothing", "24"=>"fashion & accessories;shoes", "25"=>"fashion & accessories;women's clothing", "33"=>"gifts", "34"=>"gifts;chocolate", "35"=>"gifts;flowers", "36"=>"gifts;novelty", "40"=>"home & garden", "41"=>"home & garden;bed & bath", "42"=>"home & garden;diy", "43"=>"home & garden;furniture & interior design", "44"=>"home & garden;garden", "45"=>"home & garden;home appliances", "37"=>"health & beauty", "38"=>"health & beauty;cosmetics", "39"=>"health & beauty;health products"}, @countries=["united states"], @product_count=0>
