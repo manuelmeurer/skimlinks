@@ -35,7 +35,9 @@ module Skimlinks
     end
 
     def options
-      Hash[*VALID_CONFIG_KEYS.map { |key| [key, self.send(key)] }.flatten]
+      VALID_CONFIG_KEYS.each_with_object({}) do |config_key, hash|
+        hash[config_key] = self.send(config_key)
+      end
     end
 
     def reset
