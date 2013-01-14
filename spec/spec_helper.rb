@@ -5,7 +5,6 @@ require 'ffaker'
 
 VCR.configure do |config|
   config.hook_into :webmock
-  config.allow_http_connections_when_no_cassette = true
   config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   config.default_cassette_options = {
     record:            :new_episodes,
@@ -19,9 +18,6 @@ RSpec.configure do |config|
   config.filter_run :focus
 
   config.order = 'random'
-
-  # Make VCR macros available to all specs
-  config.extend VCR::RSpec::Macros
 end
 
 def valid_value_for_config(key)

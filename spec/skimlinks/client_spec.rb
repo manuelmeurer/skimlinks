@@ -52,8 +52,6 @@ describe Skimlinks::Client do
   end
 
   context 'actions' do
-    use_vcr_cassette 'Skimlinks_Client'
-
     before do
       Skimlinks.configuration.api_key = 'foo'
     end
@@ -62,13 +60,19 @@ describe Skimlinks::Client do
       subject { Skimlinks::Client.new.merchant_categories }
 
       it 'returns a non-empty hash' do
-        subject.should be_an_instance_of(Hash)
-        subject.should_not be_empty
+        VCR.use_cassette 'Skimlinks_Client' do
+          subject.should be_an_instance_of(Hash)
+          subject.should_not be_empty
+        end
       end
     end
 
     describe '#merchant_category_ids' do
-      subject { Skimlinks::Client.new.merchant_category_ids }
+      subject {
+        VCR.use_cassette 'Skimlinks_Client' do
+          Skimlinks::Client.new.merchant_category_ids
+        end
+      }
 
       it 'returns a non-empty array' do
         subject.should be_an_instance_of(Array)

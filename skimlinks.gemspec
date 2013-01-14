@@ -22,12 +22,12 @@ Gem::Specification.new do |gem|
 
   gem.add_development_dependency 'rspec', '~> 2.12.0'
   gem.add_development_dependency 'webmock', '~> 1.9.0'
-  gem.add_development_dependency 'vcr', '~> 2.3.0'
+  gem.add_development_dependency 'vcr', '~> 2.4.0'
   gem.add_development_dependency 'ffaker', '~> 1.15.0'
-  gem.add_development_dependency 'rake', '~> 10.0.1'
-  gem.add_development_dependency 'rb-fsevent', '~> 0.9.2'
-  gem.add_development_dependency 'guard', '~> 1.5.2'
-  gem.add_development_dependency 'guard-rspec', '~> 2.1.2'
+  gem.add_development_dependency 'rake', '~> 10.0.3'
+  gem.add_development_dependency 'rb-fsevent', '~> 0.9.3'
+  gem.add_development_dependency 'guard', '~> 1.6.1'
+  gem.add_development_dependency 'guard-rspec', '~> 2.3.3'
 
   gem.add_dependency 'mechanize', '~> 2.5.1'
   gem.add_dependency 'rest-client', '~> 1.6.7'
