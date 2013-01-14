@@ -36,6 +36,6 @@ Gem::Specification.new do |gem|
 
   if RUBY_PLATFORM == 'java'
     gem.add_dependency 'json-jruby', '~> 1.5.0'
-    gem.add_dependency 'jruby-openssl', '~> 0.7.7'
+    gem.add_dependency 'jruby-openssl', '~> 0.8.2'
   end
 end
