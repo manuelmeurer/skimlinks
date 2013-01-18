@@ -3,6 +3,7 @@
 [![Build Status](https://secure.travis-ci.org/krautcomputing/skimlinks.png)](http://travis-ci.org/krautcomputing/skimlinks)
 [![Dependency Status](https://gemnasium.com/krautcomputing/skimlinks.png)](https://gemnasium.com/krautcomputing/skimlinks)
 [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/krautcomputing/skimlinks)
+[![Gem Version](https://badge.fury.io/rb/skimlinks.png)](http://badge.fury.io/rb/skimlinks)
 
 A simple wrapper around the [Skimlinks APIs](http://skimlinks.com/apis)
 
