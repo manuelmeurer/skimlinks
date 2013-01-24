@@ -20,7 +20,7 @@ module Skimlinks
       ActiveSupport::Cache::Store
     ]
     VALID_CACHE_TTL_CLASSES = [
-      Fixnum
+      Numeric
     ]
 
     DEFAULT_API_KEY   = nil

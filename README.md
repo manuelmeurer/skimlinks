@@ -56,7 +56,7 @@ end
 #### Get a list of product categories
 
 ```ruby
->> Skimlinks::ProductApi.categories
+>> Skimlinks::ProductSearch.new.categories
 
 => {
 =>   "Animals"                                                      => 1, # Category name => category ID
@@ -72,7 +72,7 @@ end
 #### Get a nested list of product categories
 
 ```ruby
->> Skimlinks::ProductApi.nested_categories
+>> Skimlinks::ProductSearch.new.nested_categories
 
 => {
 =>   "Animals" => {
@@ -91,7 +91,7 @@ end
 #### Search for products
 
 ```ruby
->> Skimlinks::ProductApi.products(
+>> Skimlinks::ProductSearch.new(
 >>   query:       'justin bieber', # Search query                                           (mandatory)
 >>   page:        1,               # Page                                                   (optional, defaults to 1)
 >>   rows:        10,              # Number of rows to return                               (optional, max. 300, defaults to 10)
@@ -100,7 +100,7 @@ end
 >>   locale:      'uk',            # Restrict search to products with a certain locale      (optional)
 >>   merchant_id: 8286,            # Restrict search to products of a specific merchant     (optional)
 >>   category:    "Toys & Games"   # Restrict search to products in a certain category      (optional)
->> )
+>> ).products
 
 => [
 =>   #<Skimlinks::Product:0x00000103e13bc0 @id="16378111", @name="Justin Bieber (Live) Poster", @url="http://www.play.com/Product.aspx?r=GADG&title=20468288", @description="Justin Bieber (Live) Poster", @merchant="Play.com", @country="UK", @price=299, @currency="gbp", @category="Toys & Games", @image_urls=[#<URI::HTTP:0x00000103e13cb0 URL:http://images.productserve.com/preview/1418/153122801.jpg>]>,
@@ -115,9 +115,9 @@ end
 #### Search for merchants
 
 ```ruby
->> Skimlinks::MerchantApi.merchants(
+>> Skimlinks::MerchantSearch.new(
 >>   category_ids: [1, 2, 3] # Return only merchants in the specificed categories (optional)
->> )
+>> ).merchants
 
 => [
 =>   #<Skimlinks::Merchant:0x00000103d33b60 @id=17738, @name="*NEW!* High Commission Payout!", @preferred={}, @updated_at=2012-12-16 01:02:00 +0100, @average_conversion_rate="0", @average_commission="0", @logo_url="http://s.skimresources.com/logos/17738.jpg", @domains={"9682"=>"mykegelsecret.com", "45143"=>"kegelmasters.com"}, @categories={"37"=>"health & beauty", "1"=>"adult & mature", "38"=>"health & beauty;cosmetics", "39"=>"health & beauty;health products"}, @countries=["united states"], @product_count=0>,
@@ -130,8 +130,8 @@ end
 #### Get a single merchant
 
 ```ruby
->> Skimlinks::MerchantApi.merchant(
->>  12678 # Merchant ID, get it from calling Skimlinks::MerchantApi.merchants first (mandatory)
+>> Skimlinks::MerchantSearch.new.merchant(
+>>  12678 # Merchant ID, get it from calling Skimlinks::MerchantSearch.merchants first (mandatory)
 >> )
 
 => #<Skimlinks::Merchant:0x00000105204f30 @id=12678, @name="Amazon US", @preferred={"commission"=>"8.5% General products\r\n4% Electronics", "commissionDetails"=>"Was 6% --&gt; NOW 8.5% General products!\r\nWas 3% --&gt; NOW 4% Electronics!", "description"=>"Amazon.com is the global leader in e-commerce.  They launch new product categories and stores around the world as it offers customers greater selection, lower prices, more in-stock merchandise, and a best-in-class shopping experience.", "ecpc"=>"0.00", "featured_commission"=>nil, "pp_enabled"=>"1"}, @updated_at=2012-12-07 01:02:00 +0100, @average_conversion_rate="5.42%", @average_commission="6.36%", @logo_url="http://s.skimresources.com/logos/12678.jpeg", @domains={"6309"=>"amazon.com", "47172"=>"wireless.amazon.com", "119814"=>"amazonsupply.com"}, @categories={"12"=>"consumer electronics;mobiles, pdas & satnav", "50"=>"phones, tv & broadband subscriptions", "8"=>"consumer electronics", "9"=>"consumer electronics;audio, tv & home theatre", "10"=>"consumer electronics;cameras & photos", "11"=>"consumer electronics;gadgets & geeks", "13"=>"consumer electronics;mp3 players & accessories", "18"=>"fashion & accessories", "19"=>"fashion & accessories;belts & bags", "20"=>"fashion & accessories;children's clothing", "21"=>"fashion & accessories;jewelry", "22"=>"fashion & accessories;lingerie & sleepwear", "23"=>"fashion & accessories;men's clothing", "24"=>"fashion & accessories;shoes", "25"=>"fashion & accessories;women's clothing", "33"=>"gifts", "34"=>"gifts;chocolate", "35"=>"gifts;flowers", "36"=>"gifts;novelty", "40"=>"home & garden", "41"=>"home & garden;bed & bath", "42"=>"home & garden;diy", "43"=>"home & garden;furniture & interior design", "44"=>"home & garden;garden", "45"=>"home & garden;home appliances", "37"=>"health & beauty", "38"=>"health & beauty;cosmetics", "39"=>"health & beauty;health products"}, @countries=["united states"], @product_count=0>
@@ -140,7 +140,7 @@ end
 #### Get a list of merchant categories
 
 ```ruby
->> Skimlinks::MerchantApi.categories
+>> Skimlinks::MerchantSearch.new.categories
 
 => {
 =>   "adult & mature"                                  => 1, # Category name => category ID
@@ -160,7 +160,7 @@ end
 #### Get a nested list of merchant categories
 
 ```ruby
->> Skimlinks::MerchantApi.nested_categories
+>> Skimlinks::MerchantSearch.new.nested_categories
 
 => {
 =>   "adult & mature"            => nil,

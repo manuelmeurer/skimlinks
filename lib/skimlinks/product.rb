@@ -9,7 +9,7 @@ module Skimlinks
             .strip             # Remove leading and trailing whitespace
             .gsub(/\n+/, "\n") # Replace multiple \n's by single ones
 
-          category = ProductApi.categories.invert[product['categorisation']['categoryId'].to_i] || 'empty'
+          category = ProductSearch.new.categories.invert[product['categorisation']['categoryId'].to_i] || 'empty'
 
           self.new \
             id:          product['id'],

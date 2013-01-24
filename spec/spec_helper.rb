@@ -33,7 +33,7 @@ def valid_value_for_config(key)
     case
     when valid_value_classes.include?(NilClass)
       nil
-    when valid_value_classes.include?(Fixnum)
+    when valid_value_classes.include?(Numeric)
       rand(1_000)
     else
       raise StandardError, "Don't know how to create valid value for config #{key}."

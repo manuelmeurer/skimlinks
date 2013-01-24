@@ -24,4 +24,18 @@ describe Skimlinks::Configuration do
       end
     end
   end
+
+  describe '#cache_ttl' do
+    it 'can be a Fixnum' do
+      expect do
+        Skimlinks.configuration.cache_ttl = 100
+      end.to_not raise_error
+    end
+
+    it 'can be a Float' do
+      expect do
+        Skimlinks.configuration.cache_ttl = 100.1
+      end.to_not raise_error
+    end
+  end
 end

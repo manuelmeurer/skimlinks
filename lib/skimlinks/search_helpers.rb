@@ -1,5 +1,15 @@
+require 'active_support/concern'
+
 module Skimlinks
-  module ApiHelpers
+  module SearchHelpers
+    extend ActiveSupport::Concern
+
+    def initialize(args = {})
+      args.each do |k, v|
+        self.send "#{k}=", v
+      end
+    end
+
     def nested_categories
       {}.tap do |all_categories|
         self.categories.each do |category, id|
