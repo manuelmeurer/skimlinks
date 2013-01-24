@@ -42,7 +42,7 @@ module Skimlinks
     private
 
     def search_params(args = {})
-      args = args.dup.reverse_merge((SEARCH_PARAMS + [:rows, :page]).each_with_object({}) { |search_param, hash| hash[search_param] = self.send(search_param) unless self.send(search_param).nil? })
+      args = args.dup.reverse_merge((SEARCH_PARAMS + [:rows, :page]).each_with_object({}) { |search_param, hash| hash[search_param.to_sym] = self.send(search_param) unless self.send(search_param).nil? })
 
       raise Skimlinks::InvalidParameters, "One of these params must be set: #{SEARCH_PARAMS.join(', ')}" if SEARCH_PARAMS.none? { |param| args.has_key?(param.to_sym) }
       raise Skimlinks::InvalidParameters, "Locale #{args[:locale]} is not a valid locale. Valid locales are #{LOCALES.join(', ')}" if args[:locale].present? && !LOCALES.include?(args[:locale])
