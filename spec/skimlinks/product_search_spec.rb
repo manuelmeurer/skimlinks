@@ -4,7 +4,7 @@ describe Skimlinks::ProductSearch do
   subject { Skimlinks::ProductSearch.new }
 
   before do
-    Skimlinks.configuration.api_key = '85399dc089e6baf58e1d664670f4614e'
+    Skimlinks.configuration.api_key = 'foo'
   end
 
   describe '#categories' do
