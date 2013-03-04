@@ -60,7 +60,7 @@ describe Skimlinks::Client do
       subject { Skimlinks::Client.new.merchant_categories }
 
       it 'returns a non-empty hash' do
-        VCR.use_cassette 'Skimlinks_Client' do
+        VCR.use_cassette 'Skimlinks_MerchantSearch' do
           subject.should be_an_instance_of(Hash)
           subject.should_not be_empty
         end
@@ -69,7 +69,7 @@ describe Skimlinks::Client do
 
     describe '#merchant_category_ids' do
       subject {
-        VCR.use_cassette 'Skimlinks_Client' do
+        VCR.use_cassette 'Skimlinks_MerchantSearch' do
           Skimlinks::Client.new.merchant_category_ids
         end
       }
