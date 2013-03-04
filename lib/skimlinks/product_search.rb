@@ -22,7 +22,7 @@ module Skimlinks
     attr_accessor :rows, :page, *SEARCH_PARAMS
 
     def categories
-      Hash[
+      @categories ||= Hash[
         client.product_categories
           .invert
           .sort
@@ -31,12 +31,16 @@ module Skimlinks
     end
 
     def products(args = {})
-      product_data = client.product_search(search_params(args))
-      Product.build_from_api_response(product_data)
+      @products ||= {}
+      @products[args] ||= begin
+        product_data = client.product_search(search_params(args))
+        Product.build_from_api_response(product_data)
+      end
     end
 
     def product_count(args = {})
-      client.product_count(search_params(args))
+      @product_count ||= {}
+      @product_count[args] ||= client.product_count(search_params(args))
     end
 
     private
