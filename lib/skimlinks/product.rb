@@ -1,6 +1,6 @@
 module Skimlinks
   class Product
-    attr_accessor :id, :name, :url, :description, :merchant, :country, :price, :currency, :category, :image_urls
+    attr_accessor :id, :name, :url, :description, :merchant, :merchant_id, :product_id, :country, :price, :currency, :category, :image_urls
 
     class << self
       def build_from_api_response(product_data)
@@ -17,6 +17,8 @@ module Skimlinks
             url:         product['url'],
             description: description,
             merchant:    product['merchant'],
+            merchant_id: product['merchantId'],
+            product_id:  product['productId'],
             country:     product['country'],
             price:       product['price'],
             currency:    product['currency'].downcase,
