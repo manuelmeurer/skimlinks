@@ -99,7 +99,7 @@ Skimlinks::ProductSearch.new(
   max_price:   500,             # Maximum price (including decimal digits, i.e. 500 = $5.00) (optional)
   locale:      'uk',            # Restrict search to products with a certain locale          (optional)
   merchant_id: 8286,            # Restrict search to products of a specific merchant         (optional)
-  category:    "Toys & Games"   # Restrict search to products in a certain category          (optional)
+  category:    'Toys & Games'   # Restrict search to products in a certain category          (optional)
 ).products
 
 => [
