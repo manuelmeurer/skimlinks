@@ -7,6 +7,8 @@
 
 A simple wrapper around the [Skimlinks APIs](http://skimlinks.com/apis)
 
+Read the accompanying [blog post](http://www.krautcomputing.com/blog/2013/01/11/new-gem-skimlinks/).
+
 ## Requirements
 
 Requires Ruby 1.9.2 or higher
