@@ -41,6 +41,8 @@ module Skimlinks
       end
     end
 
+    # Product API
+
     def product_search(args)
       product_count_and_products(args).last
     end
@@ -52,6 +54,8 @@ module Skimlinks
     def product_categories
       @product_categories ||= product_api('categories')['skimlinksProductAPI']['categories']
     end
+
+    # Merchant API
 
     def merchant_categories
       @merchant_categories ||= merchant_api('categories')
@@ -96,6 +100,8 @@ module Skimlinks
         end
       end.flatten
     end
+
+    # Link API
 
     def affiliate(url, publisher_id)
       link_api url, publisher_id
