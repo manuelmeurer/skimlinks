@@ -2,7 +2,7 @@ module Skimlinks
   class MerchantSearch
     include Skimlinks::SearchHelpers
 
-    attr_accessor :category_ids, :locale, :exclude_no_products
+    attr_accessor :query, :category_ids, :locale, :exclude_no_products
 
     def categories
       @categories ||= begin
@@ -26,20 +26,29 @@ module Skimlinks
     def merchants(args = {})
       @merchants ||= {}
       @merchants[args] ||= begin
-        args = args.dup.reverse_merge([:category_ids, :locale, :exclude_no_products].each_with_object({}) { |search_param, hash| hash[search_param] = self.send(search_param) unless self.send(search_param).nil? })
+        args = args.dup.reverse_merge([:query, :category_ids, :locale, :exclude_no_products].each_with_object({}) { |search_param, hash| hash[search_param] = self.send(search_param) unless self.send(search_param).nil? })
 
-        category_ids = if args[:category_ids].present?
-          Array(args[:category_ids])
+        merchant_data = case
+        when args[:query].blank? && args[:category_ids].blank?
+          merchants_in_categories(client.merchant_category_ids, args)
+        when args[:query].present? && args[:category_ids].present?
+          merchants_in_categories(args[:category_ids], args) & client.merchant_search(args[:query])
+        when args[:query].present?
+          client.merchant_search(args[:query])
         else
-          client.merchant_category_ids
+          merchants_in_categories(args[:category_ids], args)
         end
-
-        merchant_data = category_ids.map do |category_id|
-          client.merchants(category_id, args[:locale], args[:exclude_no_products])
-        end.flatten.uniq
 
         Merchant.build_from_api_response(merchant_data)
       end
+    end
+
+    private
+
+    def merchants_in_categories(category_ids, args)
+      Array(category_ids).map do |category_id|
+        client.merchants_in_category(category_id, args[:locale], args[:exclude_no_products])
+      end.flatten.uniq
     end
   end
 end

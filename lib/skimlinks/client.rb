@@ -65,7 +65,7 @@ module Skimlinks
       @merchant_category_ids ||= flatten(self.merchant_categories).grep(/^\d+$/).uniq.map(&:to_i)
     end
 
-    def merchants(category_id, locale = nil, exclude_no_products = false, include_product_count = false)
+    def merchants_in_category(category_id, locale = nil, exclude_no_products = false, include_product_count = false)
       [].tap do |merchants|
         start, found = 0, nil
 
@@ -92,6 +92,21 @@ module Skimlinks
               merchant['productCount'] == 0
             end
           end
+
+          merchants << data['merchants']
+
+          start = data['numStarted'].to_i + data['numReturned'].to_i
+          found = data['numFound']
+        end
+      end.flatten
+    end
+
+    def merchant_search(query, preferred = false)
+      [].tap do |merchants|
+        start, found = 0, nil
+
+        while found.nil? || start < found
+          data = merchant_api('search', query, 'limit', 200, 'start', start, preferred ? '?filter_by=preferred' : nil)
 
           merchants << data['merchants']
 
@@ -202,7 +217,7 @@ module Skimlinks
         Skimlinks.configuration.format,
         Skimlinks.configuration.api_key,
         method,
-        *params
+        *params.compact
       ].join('/')
 
       get(@merchant_api, path).tap do |response|

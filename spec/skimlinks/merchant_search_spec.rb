@@ -24,12 +24,46 @@ describe Skimlinks::MerchantSearch do
   end
 
   describe '#merchants' do
-    let(:merchants) { subject.merchants }
+    let(:category_id) { 12 }
+    let(:query) { 'amazon' }
 
     it 'returns an array of Skimlinks::Merchant objects' do
       VCR.use_cassette 'Skimlinks_MerchantSearch' do
-        merchants.should be_an_instance_of(Array)
-        merchants.should be_all { |merchant| merchant.is_a?(Skimlinks::Merchant) }
+        subject.merchants.should be_an_instance_of(Array)
+        subject.merchants.should be_present
+        subject.merchants.should be_all { |merchant| merchant.is_a?(Skimlinks::Merchant) }
+      end
+    end
+
+    context 'when searching by a category ID' do
+      let(:merchants) { subject.merchants(category_ids: category_id) }
+
+      it 'returns merchants from the specified category' do
+        VCR.use_cassette 'Skimlinks_MerchantSearch' do
+          merchants.should be_an_instance_of(Array)
+          merchants.should be_present
+          merchants.should be_all { |merchant| merchant.categories.keys.map(&:to_i).include?(category_id) }
+        end
+      end
+    end
+
+    context 'when searching by a query' do
+      let(:merchants) { subject.merchants(query: query) }
+
+      it 'returns merchants that match the query' do
+        VCR.use_cassette 'Skimlinks_MerchantSearch' do
+          merchants.should be_all { |merchant| merchant.name =~ /#{Regexp.escape(query)}/i }
+        end
+      end
+    end
+
+    context 'when searching by a category ID and a query' do
+      let(:merchants) { subject.merchants(category_ids: category_id, query: query) }
+
+      it 'returns merchants that match the query' do
+        VCR.use_cassette 'Skimlinks_MerchantSearch' do
+          merchants.should be_all { |merchant| merchant.categories.keys.map(&:to_i).include?(category_id) && merchant.name =~ /#{Regexp.escape(query)}/i }
+        end
       end
     end
   end
