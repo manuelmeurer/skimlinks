@@ -62,7 +62,7 @@ describe Skimlinks::Client do
       it 'returns a non-empty hash' do
         VCR.use_cassette 'Skimlinks_MerchantSearch' do
           subject.should be_an_instance_of(Hash)
-          subject.should_not be_empty
+          subject.should be_present
         end
       end
     end
@@ -76,7 +76,7 @@ describe Skimlinks::Client do
 
       it 'returns a non-empty array' do
         subject.should be_an_instance_of(Array)
-        subject.should_not be_empty
+        subject.should be_present
       end
     end
   end
