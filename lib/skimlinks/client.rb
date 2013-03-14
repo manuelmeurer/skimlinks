@@ -65,7 +65,7 @@ module Skimlinks
       @merchant_category_ids ||= flatten(self.merchant_categories).grep(/^\d+$/).uniq.map(&:to_i)
     end
 
-    def merchants_in_category(category_id, locale = nil, exclude_no_products = false, include_product_count = false)
+    def merchants_in_category(category_id, locale = nil)
       [].tap do |merchants|
         start, found = 0, nil
 
@@ -76,20 +76,6 @@ module Skimlinks
           if locale.present?
             data['merchants'].reject! do |merchant|
               merchant['countries'].present? && (LOCALE_MERCHANT_COUNTRIES[locale.to_sym] & merchant['countries']).empty?
-            end
-          end
-
-          # Add product count for each merchant
-          if include_product_count
-            data['merchants'].each do |merchant|
-              merchant.merge! 'productCount' => self.product_count(merchant_id: merchant['merchantID'])
-            end
-          end
-
-          # Exclude merchants without any products
-          if exclude_no_products
-            data['merchants'].reject! do |merchant|
-              merchant['productCount'] == 0
             end
           end
 

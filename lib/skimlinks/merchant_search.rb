@@ -2,7 +2,15 @@ module Skimlinks
   class MerchantSearch
     include Skimlinks::SearchHelpers
 
-    attr_accessor :query, :category_ids, :locale, :exclude_no_products
+    ATTRIBUTES = %w(
+      query
+      category_ids
+      locale
+      exclude_no_products
+      include_product_count
+    )
+
+    attr_accessor *ATTRIBUTES
 
     def categories
       @categories ||= begin
@@ -24,10 +32,16 @@ module Skimlinks
     end
 
     def merchants(args = {})
+      args = args.dup.reverse_merge(
+        ATTRIBUTES.each_with_object({}) do |attribute, hash|
+          hash[attribute.to_sym] = self.send(attribute) unless self.send(attribute).nil?
+        end
+      )
+
+      raise ArgumentError, "If exclude_no_products is set to true, include_product_count must also be true." if args[:exclude_no_products] && !args[:include_product_count]
+
       @merchants ||= {}
       @merchants[args] ||= begin
-        args = args.dup.reverse_merge([:query, :category_ids, :locale, :exclude_no_products].each_with_object({}) { |search_param, hash| hash[search_param] = self.send(search_param) unless self.send(search_param).nil? })
-
         merchant_data = case
         when args[:query].blank? && args[:category_ids].blank?
           merchants_in_categories(client.merchant_category_ids, args)
@@ -39,6 +53,18 @@ module Skimlinks
           merchants_in_categories(args[:category_ids], args)
         end
 
+        if args[:include_product_count]
+          merchant_data.map! do |merchant|
+            merchant.merge! 'productCount' => client.product_count(merchant_id: merchant['merchantID'])
+          end
+
+          if args[:exclude_no_products]
+            merchant_data.reject! do |merchant|
+              merchant['productCount'] == 0
+            end
+          end
+        end
+
         Merchant.build_from_api_response(merchant_data)
       end
     end
@@ -47,7 +73,7 @@ module Skimlinks
 
     def merchants_in_categories(category_ids, args)
       Array(category_ids).map do |category_id|
-        client.merchants_in_category(category_id, args[:locale], args[:exclude_no_products])
+        client.merchants_in_category(category_id, args[:locale])
       end.flatten.uniq
     end
   end
