@@ -18,7 +18,7 @@ module Skimlinks
             domains:                 HashWithIndifferentAccess.new(merchant['domains']),
             categories:              HashWithIndifferentAccess.new(merchant['categories']),
             countries:               Array(merchant['countries'].presence),
-            product_count:           merchant['productCount'].to_i
+            product_count:           merchant['productCount'].present? ? merchant['productCount'].to_i : nil
         end.sort_by(&:name)
       end
     end
