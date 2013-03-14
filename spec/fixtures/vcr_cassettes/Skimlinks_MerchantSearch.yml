@@ -21959,4 +21959,68 @@ http_interactions:
         dkGygXyvXX5rtfwPXhEqdDQrAAA=
     http_version: 
   recorded_at: Wed, 13 Mar 2013 13:02:07 GMT
+- request:
+    method: get
+    uri: http://api-merchants.skimlinks.com/merchants/json/foo/search/virgin%20atlantic/limit/200/start/0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "Q29udGVudC1FbmNvZGluZw==":
+      - !binary |-
+        Z3ppcA==
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOA==
+      !binary "RGF0ZQ==":
+      - !binary |-
+        VGh1LCAxNCBNYXIgMjAxMyAwOToxNToxMSBHTVQ=
+      !binary "U2VydmVy":
+      - !binary |-
+        bmdpbngvMS4yLjE=
+      !binary "VmFyeQ==":
+      - !binary |-
+        QWNjZXB0LUVuY29kaW5n
+      !binary "WC1Qb3dlcmVkLUJ5":
+      - !binary |-
+        UEhQLzUuMy4xMA==
+      !binary "Q29udGVudC1MZW5ndGg=":
+      - !binary |-
+        NzE4
+      !binary "Q29ubmVjdGlvbg==":
+      - !binary |-
+        a2VlcC1hbGl2ZQ==
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA82VXU/bMBSG/8rBEmjT0pIPmrTdFQJN2iYxiY9xAahy05PE
+        NLEj26FCiP++4xRGu7LBVsG4aJWc89p+/bx2e8OsqPDI8qpmQxb6QdTxo06w
+        c+wPhkEwDKMPvj/0feYx2VSfVCMnbJi0LzRGW6RXdtc9RNto2VYSqlSo04JL
+        a9jw7IbVGjPU2nVvWKqqShgjlCRttEnih8o+Wi5KGsROuYFwEzqdrdx+hINv
+        pxBtbmyQeIIm1aK28/Hfhc6FhF1b0mIihYJfIXDQqrEIEu1M6SnYglswNZcG
+        oh2gCayQ3E1ggPrlZCYm2IWvQubGKgnvvvCKi5S/92C/GXPhwbGaXisPjmhH
+        eeEKu42xmpeCA5cT2OM1kmYmgWuES+qRhQxnoDJaG6EQeVHSxxoPpLKQKZ2j
+        JRM5tZVBODnavZtIi/EYuYSMX6lGC4umS3vGtE4d6m6bRYacWONktEySmq5b
+        1yOUfFy2UQTslohxiye1+54sphwdu3BDyvdnyvepfd53Y6O4v1A74BWuAicB
+        Edc8xz0l6cGZOaSVWrc7weZif8Fs6BoFN6NS5YoNrW7QY/NnVlhbD8+3z7dN
+        10xFpdEQiZRA0HbPt53InG87c6NfvHRzkbkDoig9adxRi/1B4NOUV62ww++F
+        NJMDk5LRXGmBrbjXIyWleoWlB9k8L9iCQlmkE+nkdAHsXH3GhLSo56eIl7Rq
+        IymsCUwpVDLwUDCWFjHs4ta7+dcgwijpJ08mAbtCz/i1+VMiv0nDXwoj46X5
+        yzRah93LOl/GHwZ+/IB/ib7HwmQQ9V8mm2X0K9msk0U0eOtZtA5Xs4gDP+i9
+        xlVYh248SMJwrd+cl6LaOlulmiRxFD2P6tmaYHrxWwXTix8D0w9eCUz89H38
+        T2DiR+6hA/PMv6S1wCSh7wdvEkzrbBVMPwj7g2eDuVip/AB/V891zAoAAA==
+    http_version: 
+  recorded_at: Thu, 14 Mar 2013 09:15:12 GMT
 recorded_with: VCR 2.4.0

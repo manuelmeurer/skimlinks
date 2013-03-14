@@ -55,6 +55,16 @@ describe Skimlinks::MerchantSearch do
           merchants.should be_all { |merchant| merchant.name =~ /#{Regexp.escape(query)}/i }
         end
       end
+
+      context 'when the query contains whitespace' do
+        let(:query) { 'virgin atlantic' }
+
+        it 'should not raise an error' do
+          VCR.use_cassette 'Skimlinks_MerchantSearch' do
+            expect { merchants }.to_not raise_error
+          end
+        end
+      end
     end
 
     context 'when searching by a category ID and a query' do
