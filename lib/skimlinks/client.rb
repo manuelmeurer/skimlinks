@@ -93,12 +93,12 @@ module Skimlinks
             end
           end
 
-          merchants << data['merchants']
+          merchants.concat data['merchants'] if data['merchants'].present?
 
           start = data['numStarted'].to_i + data['numReturned'].to_i
           found = data['numFound']
         end
-      end.flatten
+      end
     end
 
     def merchant_search(query, preferred = false)
@@ -108,12 +108,12 @@ module Skimlinks
         while found.nil? || start < found
           data = merchant_api('search', query, 'limit', 200, 'start', start, preferred ? '?filter_by=preferred' : nil)
 
-          merchants << data['merchants']
+          merchants.concat data['merchants'] if data['merchants'].present?
 
           start = data['numStarted'].to_i + data['numReturned'].to_i
           found = data['numFound']
         end
-      end.flatten
+      end
     end
 
     # Link API
