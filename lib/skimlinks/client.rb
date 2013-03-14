@@ -165,12 +165,12 @@ module Skimlinks
       [product_data['numFound'], product_data['products']]
     end
 
-    def get(api, path)
+    def get(api, path, params = {})
       raise Skimlinks::InvalidParameters, 'Only JSON format is supported right now.' unless Skimlinks.configuration.format == :json
 
       do_get = lambda do
         returning_json do
-          api[path].get
+          api[URI.escape(path)].get params: params
         end
       end
 
@@ -180,7 +180,7 @@ module Skimlinks
         cache_key = [
           'skimlinks',
           'api',
-          Digest::MD5.hexdigest(api.to_s + path)
+          Digest::MD5.hexdigest(api.to_s + path + params)
         ].join(':')
         cache_options = Skimlinks.configuration.cache_ttl > 0 ? { expires_in: Skimlinks.configuration.cache_ttl } : {}
         Skimlinks.configuration.cache.fetch cache_key, cache_options do
@@ -198,14 +198,12 @@ module Skimlinks
     def product_api(method, params = {})
       raise Skimlinks::InvalidParameters, 'API key not configured' if Skimlinks.configuration.api_key.blank?
 
-      query_params = params.reverse_merge(
+      params = params.reverse_merge(
         format: Skimlinks.configuration.format,
         key:    Skimlinks.configuration.api_key
       )
 
-      path = [method, URI.encode_www_form(query_params)].join('?')
-
-      get(@product_api, path).tap do |response|
+      get(@product_api, method, params).tap do |response|
         raise Skimlinks::InvalidParameters, 'API key is invalid' if response.is_a?(Array) && response.first =~ /^Invalid API key/
       end
     end
