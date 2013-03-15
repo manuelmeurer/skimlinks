@@ -75,19 +75,21 @@ module Skimlinks
           end
         end
 
+        merchants = Merchant.build_from_api_response(merchant_data)
+
         if args[:include_product_count]
-          merchant_data.map! do |merchant|
-            merchant.merge! 'productCount' => client.product_count(merchant_id: merchant['merchantID'])
+          merchants.each do |merchant|
+            merchant.product_count = client.product_count(merchant_id: merchant.id)
           end
 
           if args[:exclude_no_products]
-            merchant_data.reject! do |merchant|
-              merchant['productCount'] == 0
+            merchants.reject! do |merchant|
+              merchant.product_count == 0
             end
           end
         end
 
-        Merchant.build_from_api_response(merchant_data)
+        merchants
       end
     end
 
