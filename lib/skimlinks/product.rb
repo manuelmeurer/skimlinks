@@ -7,7 +7,7 @@ module Skimlinks
         product_data.map do |product|
           description = product['description']
             .strip             # Remove leading and trailing whitespace
-            .gsub(/\n+/, "\n") # Replace multiple \n's by single ones
+            .gsub(/\n+/, "\n") # Replace multiple "\n"s by a single one
 
           category = ProductSearch.new.categories.invert[product['categorisation']['categoryId'].to_i] || 'empty'
 
