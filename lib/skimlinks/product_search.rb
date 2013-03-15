@@ -54,6 +54,8 @@ module Skimlinks
         end
       )
 
+      args.assert_valid_keys(ATTRIBUTES.map(&:to_sym))
+
       raise Skimlinks::InvalidParameters, "Locale #{args[:locale]} is not a valid locale. Valid locales are #{LOCALES.join(', ')}" if args[:locale].present? && !LOCALES.include?(args[:locale])
 
       category_ids = if args[:category].present?

@@ -38,6 +38,8 @@ module Skimlinks
         end
       )
 
+      args.assert_valid_keys(ATTRIBUTES.map(&:to_sym))
+
       raise ArgumentError, "If exclude_no_products is set to true, include_product_count must also be true." if args[:exclude_no_products] && !args[:include_product_count]
 
       @merchants ||= {}
