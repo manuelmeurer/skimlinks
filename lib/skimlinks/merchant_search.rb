@@ -28,7 +28,7 @@ module Skimlinks
 
     def merchant(id)
       @merchant ||= {}
-      @merchant[id] ||= self.merchants.detect { |merchant| merchant.id == id }
+      @merchant[id] ||= self.merchants.detect { |merchant| merchant.id.to_s == id.to_s }
     end
 
     def merchants(args = {})
