@@ -1,6 +1,6 @@
 module Skimlinks
   class Product
-    attr_accessor :id, :name, :url, :description, :merchant, :merchant_id, :product_id, :country, :price, :currency, :category, :image_urls
+    attr_accessor :id, :name, :url, :description, :merchant_name, :merchant_id, :product_id, :country, :price, :currency, :category, :image_urls
 
     class << self
       def build_from_api_response(product_data)
@@ -12,18 +12,18 @@ module Skimlinks
           category = ProductSearch.new.categories.invert[product['categorisation']['categoryId'].to_i] || 'empty'
 
           self.new \
-            id:          product['id'],
-            name:        product['title'],
-            url:         product['url'],
-            description: description,
-            merchant:    product['merchant'],
-            merchant_id: product['merchantId'],
-            product_id:  product['productId'],
-            country:     product['country'],
-            price:       product['price'],
-            currency:    product['currency'].downcase,
-            category:    category,
-            image_urls:  product['imageUrl'].present? ? [URI(product['imageUrl'])] : []
+            id:            product['id'],
+            name:          product['title'],
+            url:           product['url'],
+            description:   description,
+            merchant_name: product['merchant'],
+            merchant_id:   product['merchantId'],
+            product_id:    product['productId'],
+            country:       product['country'],
+            price:         product['price'],
+            currency:      product['currency'].downcase,
+            category:      category,
+            image_urls:    product['imageUrl'].present? ? [URI(product['imageUrl'])] : []
         end
       end
 
