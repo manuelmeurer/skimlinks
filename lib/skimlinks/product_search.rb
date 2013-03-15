@@ -5,7 +5,6 @@ module Skimlinks
     include Skimlinks::SearchHelpers
 
     COUNTRIES = %w(
-      de
       us
       uk
     )
