@@ -99,9 +99,9 @@ Skimlinks::ProductSearch.new(
   rows:        10,              # Number of rows to return                                   (optional, max. 300, defaults to 10)
   min_price:   100,             # Minimum price (including decimal digits, i.e. 100 = $1.00) (optional)
   max_price:   500,             # Maximum price (including decimal digits, i.e. 500 = $5.00) (optional)
-  locale:      'uk',            # Restrict search to products with a certain locale          (optional)
+  country:     'uk',            # Restrict search to products of a specific country          (optional)
   merchant_id: 8286,            # Restrict search to products of a specific merchant         (optional)
-  category:    'Toys & Games'   # Restrict search to products in a certain category          (optional)
+  category:    'Toys & Games'   # Restrict search to products of a specific category         (optional)
 ).products
 
 => [

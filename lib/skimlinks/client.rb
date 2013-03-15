@@ -9,7 +9,7 @@ module Skimlinks
       merchant_api: 'http://api-merchants.skimlinks.com/merchants/',
       link_api:     'http://go.productwidgets.com/'
     }
-    LOCALE_MERCHANT_COUNTRIES = {
+    MERCHANT_COUNTRIES = {
       de: [
         'germany',
         'international'
@@ -65,17 +65,17 @@ module Skimlinks
       @merchant_category_ids ||= flatten(self.merchant_categories).grep(/^\d+$/).uniq.map(&:to_i)
     end
 
-    def merchants_in_category(category_id, locale = nil)
+    def merchants_in_category(category_id, country = nil)
       [].tap do |merchants|
         start, found = 0, nil
 
         while found.nil? || start < found
           data = merchant_api('category', category_id, 'limit', 200, 'start', start)
 
-          # Filter by locale
-          if locale.present?
+          # Filter by country
+          if country.present?
             data['merchants'].reject! do |merchant|
-              merchant['countries'].present? && (LOCALE_MERCHANT_COUNTRIES[locale.to_sym] & merchant['countries']).empty?
+              merchant['countries'].present? && (MERCHANT_COUNTRIES[country.to_sym] & merchant['countries']).empty?
             end
           end
 
@@ -136,7 +136,7 @@ module Skimlinks
       api_query << %(price:[#{args[:min_price].presence || '*'} TO #{args[:max_price].presence || '*'}])    if args[:min_price].present? || args[:max_price].present?
       api_query << %(categoryId:(#{args[:category_ids].join(' ')}))                                         if args[:category_ids].present?
       api_query << %(merchantId:"#{args[:merchant_id]}")                                                    if args[:merchant_id].present?
-      api_query << %(country:"#{args[:locale]}")                                                            if args[:locale].present?
+      api_query << %(country:"#{args[:country]}")                                                           if args[:country].present?
 
       # TODO: Check for categoryId 0, '' or nil, missing categoryId
 

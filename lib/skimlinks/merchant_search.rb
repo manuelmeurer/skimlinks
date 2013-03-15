@@ -5,7 +5,7 @@ module Skimlinks
     ATTRIBUTES = %w(
       query
       category_ids
-      locale
+      country
       exclude_no_products
       include_product_count
     )
@@ -75,7 +75,7 @@ module Skimlinks
 
     def merchants_in_categories(category_ids, args)
       Array(category_ids).map do |category_id|
-        client.merchants_in_category(category_id, args[:locale])
+        client.merchants_in_category(category_id, args[:country])
       end.flatten.uniq
     end
   end

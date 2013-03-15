@@ -4,7 +4,7 @@ module Skimlinks
   class ProductSearch
     include Skimlinks::SearchHelpers
 
-    LOCALES = %w(
+    COUNTRIES = %w(
       de
       us
       uk
@@ -14,7 +14,7 @@ module Skimlinks
       page
       ids
       query
-      locale
+      country
       min_price
       max_price
       merchant_id
@@ -56,7 +56,7 @@ module Skimlinks
 
       args.assert_valid_keys(ATTRIBUTES.map(&:to_sym))
 
-      raise Skimlinks::InvalidParameters, "Locale #{args[:locale]} is not a valid locale. Valid locales are #{LOCALES.join(', ')}" if args[:locale].present? && !LOCALES.include?(args[:locale])
+      raise Skimlinks::InvalidParameters, "Locale #{args[:country]} is not a valid country. Valid countries are #{COUNTRIES.join(', ')}" if args[:country].present? && !COUNTRIES.include?(args[:country])
 
       category_ids = if args[:category].present?
         self.categories.select { |category, id| category =~ /^#{Regexp.escape(args[:category])}/ }.values.tap do |c_ids|
@@ -67,7 +67,7 @@ module Skimlinks
       end
 
       {}.tap do |params|
-        %w(ids query locale min_price max_price merchant_id rows).each do |arg|
+        %w(ids query country min_price max_price merchant_id rows).each do |arg|
           params[arg.to_sym] = args[arg.to_sym] if args.has_key?(arg.to_sym)
         end
         params[:category_ids] = category_ids                         if category_ids.present?
