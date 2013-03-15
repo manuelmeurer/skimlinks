@@ -55,7 +55,7 @@ module Skimlinks
 
       args.assert_valid_keys(ATTRIBUTES.map(&:to_sym))
 
-      raise Skimlinks::InvalidParameters, "Locale #{args[:country]} is not a valid country. Valid countries are #{COUNTRIES.join(', ')}" if args[:country].present? && !COUNTRIES.include?(args[:country])
+      raise Skimlinks::InvalidParameters, "Country #{args[:country]} is not a valid country. Valid countries are #{COUNTRIES.join(', ')}" if args[:country].present? && !COUNTRIES.include?(args[:country])
 
       category_ids = if args[:category].present?
         self.categories.select { |category, id| category =~ /^#{Regexp.escape(args[:category])}/ }.values.tap do |c_ids|
