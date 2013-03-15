@@ -9,20 +9,6 @@ module Skimlinks
       merchant_api: 'http://api-merchants.skimlinks.com/merchants/',
       link_api:     'http://go.productwidgets.com/'
     }
-    MERCHANT_COUNTRIES = {
-      de: [
-        'germany',
-        'international'
-      ],
-      uk: [
-        'united kingdom',
-        'international'
-      ],
-      us: [
-        'united states',
-        'international'
-      ]
-    }
 
     attr_accessor *Configuration::VALID_CONFIG_KEYS
 
@@ -65,19 +51,12 @@ module Skimlinks
       @merchant_category_ids ||= flatten(self.merchant_categories).grep(/^\d+$/).uniq.map(&:to_i)
     end
 
-    def merchants_in_category(category_id, country = nil)
+    def merchants_in_category(category_id)
       [].tap do |merchants|
         start, found = 0, nil
 
         while found.nil? || start < found
           data = merchant_api('category', category_id, 'limit', 200, 'start', start)
-
-          # Filter by country
-          if country.present?
-            data['merchants'].reject! do |merchant|
-              merchant['countries'].present? && (MERCHANT_COUNTRIES[country.to_sym] & merchant['countries']).empty?
-            end
-          end
 
           merchants.concat data['merchants'] if data['merchants'].present?
 

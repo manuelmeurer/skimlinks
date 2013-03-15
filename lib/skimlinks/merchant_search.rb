@@ -9,6 +9,20 @@ module Skimlinks
       exclude_no_products
       include_product_count
     )
+    COUNTRY_ALIASES = {
+      de: [
+        'germany',
+        'international'
+      ],
+      uk: [
+        'united kingdom',
+        'international'
+      ],
+      us: [
+        'united states',
+        'international'
+      ]
+    }
 
     attr_accessor *ATTRIBUTES
 
@@ -46,13 +60,19 @@ module Skimlinks
       @merchants[args] ||= begin
         merchant_data = case
         when args[:query].blank? && args[:category_ids].blank?
-          merchants_in_categories(client.merchant_category_ids, args)
+          merchants_in_categories(client.merchant_category_ids)
         when args[:query].present? && args[:category_ids].present?
-          merchants_in_categories(args[:category_ids], args) & client.merchant_search(args[:query])
+          merchants_in_categories(args[:category_ids]) & client.merchant_search(args[:query])
         when args[:query].present?
           client.merchant_search(args[:query])
         else
-          merchants_in_categories(args[:category_ids], args)
+          merchants_in_categories(args[:category_ids])
+        end
+
+        if args[:country].present?
+          merchant_data.reject! do |merchant|
+            merchant['countries'].present? && (COUNTRY_ALIASES[args[:country].to_sym] & merchant['countries']).empty?
+          end
         end
 
         if args[:include_product_count]
@@ -73,9 +93,9 @@ module Skimlinks
 
     private
 
-    def merchants_in_categories(category_ids, args)
+    def merchants_in_categories(category_ids)
       Array(category_ids).map do |category_id|
-        client.merchants_in_category(category_id, args[:country])
+        client.merchants_in_category(category_id)
       end.flatten.uniq
     end
   end
