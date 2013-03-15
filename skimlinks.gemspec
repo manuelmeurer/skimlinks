@@ -14,6 +14,7 @@ Gem::Specification.new do |gem|
   gem.summary       = 'A simple wrapper around the Skimlinks APIs'
   gem.description   = 'A simple wrapper around the Skimlinks APIs'
   gem.homepage      = 'https://github.com/krautcomputing/skimlinks'
+  gem.license       = 'MIT'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r(^bin/)).map { |f| File.basename(f) }
