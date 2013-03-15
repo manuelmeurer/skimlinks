@@ -8,12 +8,17 @@ module Skimlinks
       us
       uk
     )
+    CURRENCIES = %w(
+      usd
+      gbp
+    )
     ATTRIBUTES = %w(
       rows
       page
       ids
       query
       country
+      currency
       min_price
       max_price
       merchant_id
@@ -55,7 +60,8 @@ module Skimlinks
 
       args.assert_valid_keys(ATTRIBUTES.map(&:to_sym))
 
-      raise Skimlinks::InvalidParameters, "Country #{args[:country]} is not a valid country. Valid countries are #{COUNTRIES.join(', ')}" if args[:country].present? && !COUNTRIES.include?(args[:country])
+      raise Skimlinks::InvalidParameters, "Country #{args[:country]} is not a valid country. Valid countries are: #{COUNTRIES.join(', ')}" if args[:country].present? && !COUNTRIES.include?(args[:country])
+      raise Skimlinks::InvalidParameters, "Currency #{args[:currency]} is not a valid currency. Valid currencies are: #{CURRENCIES.join(', ')}" if args[:currency].present? && !CURRENCIES.include?(args[:currency])
 
       category_ids = if args[:category].present?
         self.categories.select { |category, id| category =~ /^#{Regexp.escape(args[:category])}/ }.values.tap do |c_ids|
@@ -66,7 +72,7 @@ module Skimlinks
       end
 
       {}.tap do |params|
-        %w(ids query country min_price max_price merchant_id rows).each do |arg|
+        %w(ids query country currency min_price max_price merchant_id rows).each do |arg|
           params[arg.to_sym] = args[arg.to_sym] if args.has_key?(arg.to_sym)
         end
         params[:category_ids] = category_ids                         if category_ids.present?

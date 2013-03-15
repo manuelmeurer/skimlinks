@@ -116,6 +116,7 @@ module Skimlinks
       api_query << %(categoryId:(#{args[:category_ids].join(' ')}))                                         if args[:category_ids].present?
       api_query << %(merchantId:"#{args[:merchant_id]}")                                                    if args[:merchant_id].present?
       api_query << %(country:"#{args[:country]}")                                                           if args[:country].present?
+      api_query << %(currency:"#{args[:currency]}")                                                         if args[:currency].present?
 
       # TODO: Check for categoryId 0, '' or nil, missing categoryId
 
