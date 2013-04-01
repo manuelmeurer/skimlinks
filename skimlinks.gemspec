@@ -30,13 +30,13 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'guard', '~> 1.6.1'
   gem.add_development_dependency 'guard-rspec', '~> 2.5.0'
 
-  gem.add_dependency 'mechanize', '~> 2.5.1'
-  gem.add_dependency 'rest-client', '~> 1.6.7'
-  gem.add_dependency 'activesupport', '~> 3.0'
-  gem.add_dependency 'activemodel', '~> 3.0'
+  gem.add_runtime_dependency 'mechanize', '~> 2.5.1'
+  gem.add_runtime_dependency 'rest-client', '~> 1.6.7'
+  gem.add_runtime_dependency 'activesupport', '~> 3.0'
+  gem.add_runtime_dependency 'activemodel', '~> 3.0'
 
   if RUBY_PLATFORM == 'java'
-    gem.add_dependency 'json-jruby', '~> 1.5.0'
-    gem.add_dependency 'jruby-openssl', '~> 0.8.2'
+    gem.add_runtime_dependency 'json-jruby', '~> 1.5.0'
+    gem.add_runtime_dependency 'jruby-openssl', '~> 0.8.2'
   end
 end
