@@ -69,6 +69,8 @@ module Skimlinks
           merchants_in_categories(args[:category_ids])
         end
 
+        raise StandardError, "No country aliases for #{args[:country]} found." if args[:country].present? && !COUNTRY_ALIASES.has_key?(args[:country].to_sym)
+
         if args[:country].present?
           merchant_data.reject! do |merchant|
             merchant['countries'].present? && (COUNTRY_ALIASES[args[:country].to_sym] & merchant['countries']).empty?
