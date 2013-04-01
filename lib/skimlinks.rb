@@ -1,20 +1,21 @@
+require 'gem_config'
+require 'active_support/cache'
+
 module Skimlinks
+  include GemConfig::Base
+
   ApiError          = Class.new(StandardError)
   InvalidParameters = Class.new(StandardError)
 
-  class << self
-    def configure
-      yield configuration
-    end
-
-    def configuration
-      @configuration ||= Configuration.new
-    end
+  with_configuration do
+    has :api_key
+    has :format, values: :json, default: :json
+    has :cache, classes: ActiveSupport::Cache::Store
+    has :cache_ttl, classes: Numeric, default: 1.day
   end
 end
 
 require 'skimlinks/version'
-require 'skimlinks/configuration'
 require 'skimlinks/client'
 require 'skimlinks/merchant'
 require 'skimlinks/product'

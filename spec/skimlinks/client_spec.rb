@@ -6,23 +6,27 @@ describe Skimlinks::Client do
       [:module_config, :class_config].each do |config|
         let(config) {
           Hash[
-            *Skimlinks::Configuration::VALID_CONFIG_KEYS.map { |key| [key, valid_value_for_config(key)] }.flatten
+            *Skimlinks.configuration.rules.keys.map { |key| [key, valid_value_for_config(key)] }.flatten
           ]
         }
       end
 
       before do
         Skimlinks.configure do |config|
-          Skimlinks::Configuration::VALID_CONFIG_KEYS.each do |key|
+          Skimlinks.configuration.rules.keys.each do |key|
             config.send "#{key}=", module_config[key]
           end
         end
       end
 
+      after do
+        Skimlinks.configuration.reset
+      end
+
       it 'inherits module configuration' do
         client = Skimlinks::Client.new
 
-        Skimlinks::Configuration::VALID_CONFIG_KEYS.each do |key|
+        Skimlinks.configuration.rules.keys.each do |key|
           client.send(key).should eq(module_config[key])
         end
       end
@@ -31,7 +35,7 @@ describe Skimlinks::Client do
         it 'overrides module configuration' do
           client = Skimlinks::Client.new(class_config)
 
-          Skimlinks::Configuration::VALID_CONFIG_KEYS.each do |key|
+          Skimlinks.configuration.rules.keys.each do |key|
             client.send(key).should eq(class_config[key])
           end
         end
@@ -43,7 +47,7 @@ describe Skimlinks::Client do
             client.send "#{key}=", value
           end
 
-          Skimlinks::Configuration::VALID_CONFIG_KEYS.each do |key|
+          Skimlinks.configuration.rules.keys.each do |key|
             client.send(key).should eq(class_config[key])
           end
         end

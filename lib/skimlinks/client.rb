@@ -10,13 +10,13 @@ module Skimlinks
       link_api:     'http://go.productwidgets.com/'
     }
 
-    attr_accessor *Configuration::VALID_CONFIG_KEYS
+    attr_accessor *Skimlinks.configuration.rules.keys
 
     def initialize(args = {})
-      options = Skimlinks.configuration.options.merge(args)
+      config = Skimlinks.configuration.current.merge(args)
 
-      Configuration::VALID_CONFIG_KEYS.each do |key|
-        self.send "#{key}=", options[key]
+      Skimlinks.configuration.rules.keys.each do |key|
+        self.send "#{key}=", config[key]
       end
 
       @product_api  = RestClient::Resource.new(API_ENDPOINTS[:product_api])
