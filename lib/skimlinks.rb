@@ -8,7 +8,7 @@ module Skimlinks
   InvalidParameters = Class.new(StandardError)
 
   with_configuration do
-    has :api_key
+    has :api_key, classes: String
     has :format, values: :json, default: :json
     has :cache, classes: ActiveSupport::Cache::Store
     has :cache_ttl, classes: Numeric, default: 1.day
