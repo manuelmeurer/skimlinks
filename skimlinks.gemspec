@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.version       = Skimlinks::VERSION
   gem.platform      = Gem::Platform::RUBY
   gem.authors       = ['Manuel Meurer']
-  gem.email         = 'manuel.meurer@gmail.com'
+  gem.email         = 'manuel@krautcomputing.com'
   gem.summary       = 'A simple wrapper around the Skimlinks APIs'
   gem.description   = 'A simple wrapper around the Skimlinks APIs'
   gem.homepage      = 'https://github.com/krautcomputing/skimlinks'
