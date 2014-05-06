@@ -9,7 +9,7 @@ Gem::Specification.new do |gem|
   gem.name          = 'skimlinks'
   gem.version       = Skimlinks::VERSION
   gem.platform      = Gem::Platform::RUBY
-  gem.authors       = ['Manuel Meurer']
+  gem.author        = 'Manuel Meurer'
   gem.email         = 'manuel@krautcomputing.com'
   gem.summary       = 'A simple wrapper around the Skimlinks APIs'
   gem.description   = 'A simple wrapper around the Skimlinks APIs'
@@ -21,7 +21,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r(^(test|spec|features)/))
   gem.require_paths = ['lib']
 
-  gem.add_development_dependency 'rake', '>= 0.9.0'
+  gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rspec', '~> 2.13.0'
   gem.add_development_dependency 'webmock', '~> 1.11'
   gem.add_development_dependency 'vcr', '~> 2.4.0'
