@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.email         = 'manuel@krautcomputing.com'
   gem.summary       = 'A simple wrapper around the Skimlinks APIs'
   gem.description   = 'A simple wrapper around the Skimlinks APIs'
-  gem.homepage      = 'https://github.com/krautcomputing/skimlinks'
+  gem.homepage      = 'http://krautcomputing.github.io/skimlinks'
   gem.license       = 'MIT'
 
   gem.files         = `git ls-files`.split($/)
