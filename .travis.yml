@@ -8,5 +8,5 @@ before_install:
   - gem update bundler
 sudo: false
 matrix:
-  allowed_failures:
-    rvm: 2.4.0
+  allow_failures:
+    - rvm: 2.4.0
